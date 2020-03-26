@@ -1,0 +1,179 @@
+{% extends 'backOffice/index.html.twig' %}
+
+{% block body %}
+
+
+    <div class="user-data m-b-30">
+        <h3 class="title-3 m-b-30">
+           </i>Détails du plat</h3>
+
+        <div class="table-responsive table-data" style="height: 50%">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>id</td>
+                    <td>nom</td>
+                    <td>specialité</td>
+                    <td>type</td>
+                    <td>Déscription</td>
+                    <td>Difficulte</td>
+                    <td>Temps Prep.</td>
+                    <td>Temps Cuiss.</td>
+                    <td>HFR</td>
+                    <td>Meteo</td>
+                    <td>Humeur</td>
+                    <td>Préparation</td>
+                    <td>A éviter</td>
+                    <td>A reccomander</td>
+                    <td>Unité</td>
+                    <td>portion</td>
+                    <td>Ingrédients</td>
+                    <td>Note</td>
+                    <td>Ustensiles</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="table-data__info">
+                            {{plat.id}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.nom }}</h6>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="table-data__info">
+                            <img src="{{ asset(plat.specialite.image) }}">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.type.nom }}</h6>
+                        </div>
+                    </td>
+                    <td style="word-break:break-word;" >
+                        <div class="table-data__info"  >
+                            <h6 style="">{{ plat.description }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.difficulte }}</h6>
+                        </div>
+                    </td>
+                    <td >
+                        <div class="table-data__info">
+                            <h6>{{ plat.tempsPrepa }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.tempsCuisson }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.hfr }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.meteo }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{% for hist in plat.humeur %}
+                                    {{ hist.getNom }}
+                                {% endfor %}</h6>
+                        </div>
+                    </td>
+                    <td style="word-break:break-word;">
+                        <div class="table-data__info">
+                            <h6>{{ plat.preparation | nl2br }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{% for hist in plat.aEviter %}
+                                    {{ hist.getNomMaladie }}
+                                {% endfor %}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{% for hist in plat.aReccomander %}
+                                {{ hist.getNomMaladie }}
+                                {% endfor %}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.nomPortion }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            <h6>{{ plat.nbrPortion }}</h6>
+                        </div>
+                    </td>
+                    <td style="word-break:break-word;">
+                        <div class="table-data__info">
+                            <h6>{{ plat.ingredient }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            {% for hist in plat.note %}
+                                {{ hist.getNom }}
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table-data__info">
+                            {% for hist in plat.ustensiles %}
+                                {{ hist.getNom }}
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+
+    </div>
+        <br>
+        <h3 align="center"> <h3 class="title-3 m-b-30">
+                </i>Images</h3></h3>
+        <br>
+        <table >
+            <tbody  >
+            <div style="">
+                <th><img src="{{ asset(plat.image0) }}" style="padding-right: 25px;"></th>
+                <th><img src="{{ asset(plat.image1) }}" style="padding-right: 25px;"></th>
+                <th><img src="{{ asset(plat.image2) }}" style="padding-right: 25px;"></th>
+                <th><img src="{{ asset(plat.image3) }}" style="padding-right: 25px;"></th>
+                <th><img src="{{ asset(plat.image4) }}" style="padding-right: 25px;"></th>
+            </div>
+
+            </tbody>
+
+        </table>
+        <div class="user-data__footer">
+            <a class="au-btn au-btn-load" style="color: white" href="{{ path('plat_index') }}">Revenir a la liste</a>
+        </div>
+    </div>
+
+
+
+
+
+
+   {% endblock %}

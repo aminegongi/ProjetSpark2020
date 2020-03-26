@@ -1,0 +1,32 @@
+{% extends 'backOffice/index.html.twig' %}
+
+{% block body %}
+
+    <div align="center" >
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Modification</strong>
+                </div>
+                <div class="card-body card-block">
+                    <div action="" method="post" class="form-horizontal">
+                        {{ form_start(form) }}
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-email" class=" form-control-label">Nom</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                {{ form_widget(form.nom, {'attr':{'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+
+
+                        {{ form_widget(form.Modifier, {'attr':{'class': 'btn btn-primary btn-sm'}})  }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

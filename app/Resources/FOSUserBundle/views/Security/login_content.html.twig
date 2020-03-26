@@ -1,0 +1,137 @@
+{#{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <label for="username">{{ 'username'|trans }}</label>
+    <input class="au-input au-input--full" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+    <label for="password">{{ 'password'|trans }}</label>
+    <input class="au-input au-input--full" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'remember me'|trans }}</label>
+
+    <input class="au-btn au-btn--block au-btn--green m-b-20" type="submit" id="_submit" name="_submit" value="{{ 'login'|trans }}" />
+</form>#}
+{% trans_default_domain 'FOSUserBundle' %}
+<div id="user-popUp" class="user-popUp mfp-with-anim ">
+<div class="sc_tabs sc_tabs sc_tabs_style_1 sc_tabs_effects" style="display: block">
+    <ul class="sc_tabs_titles">
+        <li><a href="#loginForm" class="loginFormTab">Bienvenue de nouveau !</a></li>
+        <li><a href="#registerForm" class="registerFormTab">faisons connaisance !</a></li>
+    </ul>
+
+    <div class="sc_tabs_array">
+        <div id="loginForm" class="formItems loginFormBody sc_columns_2">
+            <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">On se connaît déjà ? <br>
+                Alors identifiez-vous, et bienvenue à nouveau! </h5>
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <form action="{{path("fos_user_security_check")}}" method="post" name="login_form" class="formValid">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="sc_columns_item">
+                    <input type="hidden" name="redirect_to" value="#" />
+                    <ul class="formList">
+
+
+
+                        <li class="formLogin"><input  type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="username"/></li>
+
+                        <li class="formPass"><input type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="password"/></li>
+
+
+                        <li class="remember">
+                            <a href="#" class="forgotPwd"></a>
+                            <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+                            <label for="rememberme">Se souvenir de moi</label>
+                        </li>
+                        <li class="formButton"><input class="sendEnter enter sc_button sc_button_skin_global sc_button_style_bg sc_button_size_medium" type="submit" id="_submit" name="_submit" value="{{ 'login'|trans }}" /></li>
+                    </ul>
+                </div>
+
+                <div class="sc_columns_item">
+                    <ul class="formList">
+                        <li>Connectez-vous directement grâce à vos réseaux sociaux</li>
+                        <li class="loginSoc">
+                            <a href="#" class="iconLogin fb icon-facebook"></a>
+                            <a href="#" class="iconLogin tw icon-twitter"></a>
+                            <a href="#" class="iconLogin gg icon-gplus"></a>
+                        </li>
+                        <li><a href="#">J'ai oublié mon mot de passe !</a></li>
+                    </ul>
+                </div>
+                <div class="sc_result result sc_infobox sc_infobox_closeable"></div>
+            </form>
+        </div>
+
+        <div id="registerForm" class="formItems registerFormBody sc_columns_2" align="center">
+            <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">C'est la première fois que vous accédez à notre site web?<br>Alors faisons connaissance! </h5>
+
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            {% set var = "Nom d'utilisateur" %}
+            <div class="sc_columns_item" align="center">
+                <input type="hidden" name="redirect_to" value="#" />
+                <ul class="formList" >
+
+                    <li class="formLogin">{{ form_widget(form.email, {'attr':{'class':'email', 'name':'email', 'placeholder':'Votre e-mail'}}) }}</li>
+                    <li class="formLogin">{{ form_widget(form.username, {'attr':{'class':'', 'name':'username','placeholder':var}}) }}</li>
+                    <li class="i-agree">
+                        <input type="checkbox" value="forever" id="i-agree" name="i-agree">
+                        <label for="i-agree">j'accepte</label> <a href="#">Termes et conditions</a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+            <div class="sc_columns_item">
+                <ul class="formList">
+
+
+                    <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password', 'placeholder':'Mot de passe'}}) }}</li>
+                    <li class="formLogin">{{ form_widget(form.plainPassword.second, {'attr':{'class':'','type':'passwor','placeholder':'Retapez le mot de passe'}}) }}</li>
+                    <li><input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" value="Valider" /></li>
+
+                </ul>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+
+.email {
+    -webkit-font-smoothing: antialiased;
+    list-style: none;
+    font-family: 'Cantarell', sans-serif;
+    transition: all 0.3s ease-out;
+    font-size: 16px;
+    display: block;
+    outline: none;
+    color: #888888;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ddd;
+    background-color: #fff;
+    margin: 0px;
+    width: 100%;
+    font-weight: 300;
+    box-sizing: border-box;
+    padding: 7px 13px;
+}
+
+
+
+</style>
