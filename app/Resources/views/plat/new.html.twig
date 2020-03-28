@@ -197,15 +197,10 @@
                             <label for="hf-password" class=" form-control-label">Images</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            {{ form_widget(form.image0, {'attr':{'class': 'form-control'}} ) }}
+                            {{ form_widget(form.image5, {'attr':{'class': 'form-control', 'hidden':'true'}} ) }}
 
-                            {{ form_widget(form.image1, {'attr':{'class': 'form-control'}} ) }}
+                            <input type="file" id="files" class="" name="files[]" multiple="">
 
-                            {{ form_widget(form.image2, {'attr':{'class': 'form-control'}} ) }}
-
-                            {{ form_widget(form.image3, {'attr':{'class': 'form-control'}} ) }}
-
-                            {{ form_widget(form.image4, {'attr':{'class': 'form-control'}} ) }}
                         </div>
 
                     </div>
@@ -219,6 +214,53 @@
     </div>
 </div>
 
+
+<script>
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+    // var refrence = $('#platbundle_plat_nom').val() ;
+
+    {#$('##platbundle_plat_Ajouter').submit(function (e) {#}
+    {#e.preventDefault();#}
+    {#$("#ss").attr("disabled", true);#}
+    {#//alert('e');#}
+    {#var Form_data = new FormData(this);#}
+    {#// var ref = $('#HREFF').val() ;#}
+    {#    Form_data.append("refrence", $('#HREFF').val());#}
+    {#    Form_data.append("refrence", $('#HREFF').val());#}
+    {#    Form_data.append("refrence", $('#HREFF').val());#}
+
+    {#$.ajax({#}
+    {#url: '{{ path('im') }}',#}
+    {#type: 'post',#}
+    {#data: Form_data,#}
+    {#contentType: false,#}
+    {#processData: false,#}
+    {#beforeSend:function(){#}
+    {#$('#uploaded_image').append("<h1  style='color:darkgreen;'>Images Uploading...</h1>"); class='text-success'#}
+    {#},#}
+    {#success: function (result) {#}
+    {#$('#output').html(result);#}
+    {#}#}
+    {#});#}
+    {#});#}
+</script>
 {% endblock %}
 
 

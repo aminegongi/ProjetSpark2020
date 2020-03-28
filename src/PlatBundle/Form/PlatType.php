@@ -62,11 +62,9 @@ class PlatType extends AbstractType
             ->add('type',EntityType::class,array('class'=>\PlatBundle\Entity\Typeplat::class,'choice_label'=>'nom','multiple'=>false))
             ->add('specialite',EntityType::class,array('class'=>\PlatBundle\Entity\specialite::class,'choice_label'=>'nom','multiple'=>false))
             ->add('note',EntityType::class,array('class'=>\PlatBundle\Entity\Note::class,'choice_label'=>'nomDesc','multiple'=>true , 'required'=> false))
-            ->add('image0',FileType::class,array('required'=> true))
-            ->add('image1',FileType::class,array('required'=> false))
-            ->add('image2',FileType::class,array('required'=> false))
-            ->add('image3',FileType::class,array('required'=> false))
-            ->add('image4',FileType::class,array('required'=> false));
+            ->add('image5',FileType::class,array('required'=> false));
+
+
 
 
 

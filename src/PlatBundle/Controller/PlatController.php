@@ -58,13 +58,14 @@ class PlatController extends Controller
                 $images[$j] = null;
             }
             $i = 0;
-            foreach ($_FILES['platbundle_plat']['name'] as $name => $value)
+
+            foreach ($_FILES['files']['name'] as $name => $value)
             {   if($value!=null){
-                $my_file_name = explode(".", $_FILES['platbundle_plat']['name'][$name]);
+                $my_file_name = explode(".", $_FILES['files']['name'][$name]);
 
                 //{
                 $NewImageName = md5(rand()) . '.' . $my_file_name[1];
-                $SourcePath = $_FILES['platbundle_plat']['tmp_name'][$name];
+                $SourcePath = $_FILES['files']['tmp_name'][$name];
                 $TargetPath = "images/imagePlats/".$NewImageName;
 
                 move_uploaded_file($SourcePath, $TargetPath);
@@ -73,11 +74,13 @@ class PlatController extends Controller
             }
             }
 
+
             $plat->setImage0($images[0]);
             $plat->setImage1($images[1]);
             $plat->setImage2($images[2]);
             $plat->setImage3($images[3]);
             $plat->setImage4($images[4]);
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($plat);
@@ -112,11 +115,12 @@ class PlatController extends Controller
      */
     public function editAction(Request $request, Plat $plat)
     {
-        $plat->setImage0("");
-        $plat->setImage1("");
-        $plat->setImage2("");
-        $plat->setImage3("");
-        $plat->setImage4("");
+        $plat->setImage0($plat->getImage0());
+        $plat->setImage1($plat->getImage1());
+        $plat->setImage2($plat->getImage2());
+        $plat->setImage3($plat->getImage3());
+        $plat->setImage4($plat->getImage4());
+        $plat->setImage5("");
 
 
 
@@ -125,33 +129,38 @@ class PlatController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            $i = 0;
-            $images = array();
-            for($j=0; $j<5; $j++){
-                $images[$j] = null;
+            if($_FILES['files']['name'][0]) {
+
+                $i = 0;
+                $images = array();
+                for($j=0; $j<5; $j++){
+                    $images[$j] = null;
+                }
+                foreach ($_FILES['files']['name'] as $name => $value)
+                {   if($value!=null) {
+
+                    $my_file_name = explode(".", $_FILES['files']['name'][$name]);
+
+                    //{
+                    $NewImageName = md5(rand()) . '.' . $my_file_name[1];
+                    $SourcePath = $_FILES['files']['tmp_name'][$name];
+                    $TargetPath = "images/imagePlats/" . $NewImageName;
+
+                    move_uploaded_file($SourcePath, $TargetPath);
+                    $images[$i] = $TargetPath;
+                    $i++;
+                }
+                }
+                $plat->setImage0($images[0]);
+                $plat->setImage1($images[1]);
+                $plat->setImage2($images[2]);
+                $plat->setImage3($images[3]);
+                $plat->setImage4($images[4]);
             }
-            foreach ($_FILES['platbundle_plat']['name'] as $name => $value)
-            {   if($value!=null) {
-
-                $my_file_name = explode(".", $_FILES['platbundle_plat']['name'][$name]);
-
-                //{
-                $NewImageName = md5(rand()) . '.' . $my_file_name[1];
-                $SourcePath = $_FILES['platbundle_plat']['tmp_name'][$name];
-                $TargetPath = "images/imagePlats/" . $NewImageName;
-
-                move_uploaded_file($SourcePath, $TargetPath);
-                $images[$i] = $TargetPath;
-                $i++;
-            }
-            }
 
 
-            $plat->setImage0($images[0]);
-            $plat->setImage1($images[1]);
-            $plat->setImage2($images[2]);
-            $plat->setImage3($images[3]);
-            $plat->setImage4($images[4]);
+
+
 
 
             $this->getDoctrine()->getManager()->flush();
@@ -223,7 +232,10 @@ class PlatController extends Controller
             ? $this->tokenManager->getToken('authenticate')->getValue()
             : null;
         $csrfToken = $this->tokenManager;
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
         return $this->render('@Plat/Default/test.html.twig', array(
+            'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,
             'error'=>$error,
             'last_username'=>$lastUsername

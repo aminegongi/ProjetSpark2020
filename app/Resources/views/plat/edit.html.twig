@@ -197,15 +197,9 @@
                                 <label for="hf-password" class=" form-control-label">Images</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                {{ form_widget(form.image0, {'attr':{'class': 'form-control'}} ) }}
+                                {{ form_widget(form.image5, {'attr':{'class': 'form-control', 'hidden':'true'}} ) }}
 
-                                {{ form_widget(form.image1, {'attr':{'class': 'form-control'}} ) }}
-
-                                {{ form_widget(form.image2, {'attr':{'class': 'form-control'}} ) }}
-
-                                {{ form_widget(form.image3, {'attr':{'class': 'form-control'}} ) }}
-
-                                {{ form_widget(form.image4, {'attr':{'class': 'form-control'}} ) }}
+                                <input type="file" id="files" class="" name="files[]" multiple="">
                             </div>
 
                         </div>

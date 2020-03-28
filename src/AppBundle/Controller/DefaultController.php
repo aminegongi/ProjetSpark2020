@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
@@ -43,6 +45,27 @@ class DefaultController extends Controller
     {
         return $this->render('backOffice/index.html.twig');
     }
+
+    /**
+     * @Route("/base", name="base")
+     */
+    public function renderRegisterFormAction(Request $request)
+    {
+
+
+//        if ($request->isXMLHttpRequest()) {
+//            $formFactory = $this->get('fos_user.registration.form.factory');
+//            $form = $formFactory->createForm();
+//            return new JsonResponse(array('form' => 'yessine'));
+//        }
+//        return new Response('This is not ajax!', 400);
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
+        return $this->render('frontOffice/registerForm.html.twig',array('form'=>$form->createView()));
+    }
+
+
+
 
 
 }

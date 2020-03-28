@@ -156,11 +156,11 @@
         <table >
             <tbody  >
             <div style="">
-                <th><img src="{{ asset(plat.image0) }}" style="padding-right: 25px;"></th>
-                <th><img src="{{ asset(plat.image1) }}" style="padding-right: 25px;"></th>
-                <th><img src="{{ asset(plat.image2) }}" style="padding-right: 25px;"></th>
-                <th><img src="{{ asset(plat.image3) }}" style="padding-right: 25px;"></th>
-                <th><img src="{{ asset(plat.image4) }}" style="padding-right: 25px;"></th>
+                {% if plat.image0 is not null %}<th><img src="{{ asset(plat.image0) }}" style="padding-right: 25px;"></th>{% endif %}
+                {% if plat.image1 is not null %}<th><img src="{{ asset(plat.image1) }}" style="padding-right: 25px;"></th>{% endif %}
+                {% if plat.image2 is not null %}<th><img src="{{ asset(plat.image2) }}" style="padding-right: 25px;"></th>{% endif %}
+                {% if plat.image3 is not null %}<th><img src="{{ asset(plat.image3) }}" style="padding-right: 25px;"></th>{% endif %}
+                {% if plat.image4 is not null %}<th><img src="{{ asset(plat.image4) }}" style="padding-right: 25px;"></th>{% endif %}
             </div>
 
             </tbody>

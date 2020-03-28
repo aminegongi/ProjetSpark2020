@@ -64,6 +64,30 @@ class Plat
     private $image4;
 
     /**
+     * @return string
+     */
+    public function getImage5()
+    {
+        return $this->image5;
+    }
+
+    /**
+     * @param string $image5
+     */
+    public function setImage5($image5)
+    {
+        $this->image5 = $image5;
+    }
+
+    /**
+     * this attribute is always set to null, and necessary for multiple file selection
+     * @var string
+     *
+     * @ORM\Column(name="image5", type="string", length=255, nullable=true)
+     */
+    private $image5;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
