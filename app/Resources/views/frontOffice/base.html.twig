@@ -15,6 +15,7 @@
         <link rel='stylesheet' href='{{ asset('css/style.css') }}' type='text/css' media='all' />
         <link rel='stylesheet' href='{{ asset('css/shortcodes.css') }}' type='text/css' media='all' />
         <link rel='stylesheet' href='{{ asset('css/responsive.css') }}' type='text/css' media='all' />
+        <link rel='stylesheet' href='{{ asset('css/checkBoxPlatStyle.css') }}' type='text/css' media='all' />
     {% endblock %}
     <script src="{{ asset('vendor/jquery-3.2.1.min.js') }}"></script>
 </head>
@@ -22,7 +23,7 @@
 {% block body %}
     <body class="home page">
 
-    <div id="wrap" class="wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG" >
+    <div id="wrap" class="{% block divType %}{% endblock %}" >
         <div id="wrapBox" class="wrapBox">
             {% block header %}
                 <header id="header">
@@ -163,14 +164,9 @@
 
             <div class="wrapContent">
                 <div id="wrapWide" class="wrapWide">
-                    <div class="content">
-                        <a id=""></a>
-                        {% block content %}
+                    {% block content %}
 
-
-
-                        {% endblock %}
-                    </div>
+                    {% endblock %}
                 </div>
             </div>
 

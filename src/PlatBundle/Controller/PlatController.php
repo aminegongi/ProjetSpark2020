@@ -1,7 +1,8 @@
 <?php
 
 namespace PlatBundle\Controller;
-
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use PlatBundle\Entity\Plat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -241,4 +242,64 @@ class PlatController extends Controller
             'last_username'=>$lastUsername
         ));
     }
+
+    #get un seul plat front
+    public function getPlatAction(Request $request,$id)
+    {     /** @var $session Session */
+        $session = $request->getSession();
+
+        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $lastUsernameKey = Security::LAST_USERNAME;
+
+        // get the error if any (works with forward and redirect -- see below)
+        if ($request->attributes->has($authErrorKey)) {
+            $error = $request->attributes->get($authErrorKey);
+        } elseif (null !== $session && $session->has($authErrorKey)) {
+            $error = $session->get($authErrorKey);
+            $session->remove($authErrorKey);
+        } else {
+            $error = null;
+        }
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        }
+
+        // last username entered by the user
+        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
+
+        $csrfToken = $this->tokenManager
+            ? $this->tokenManager->getToken('authenticate')->getValue()
+            : null;
+        $csrfToken = $this->tokenManager;
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
+        $em=$this->getDoctrine()->getManager();
+        $plat = $em->getRepository(Plat::class)->find($id);
+        $pattern = '/#(([0-9]*)|([0-9]*.[0-9]*))#/';
+        $portion=$plat->getNbrPortion();
+        $chaineOutput=preg_replace_callback($pattern,  function ($matches) use($portion ) {
+            return $matches[1]* $portion;
+        }, $plat->getIngredient(), -1 );
+        return  $this->render('@Plat/Default/unSeulPlat.html.twig',array(
+            'form'=>$form->createView(),
+            'csrf_token'=>$csrfToken,
+            'error'=>$error,
+            'last_username'=>$lastUsername,
+            'plat'=>$plat,
+            'ingredientsInit'=>$chaineOutput
+        ));
+    }
+
+    public function afterRequestAction(Request $request){
+        $response = $request->get('portion');
+        $response2 = $request->get('ing');
+        $pattern = '/#(([0-9]*)|([0-9]*.[0-9]*))#/';
+        $chaineOutput=preg_replace_callback($pattern,  function ($matches) use($response) {
+            return $matches[1]*$response;
+        }, $response2, -1 );
+
+        return new JsonResponse(array('response2' => $chaineOutput));
+    }
+
 }

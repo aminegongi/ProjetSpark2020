@@ -25,4 +25,9 @@ plat_homepage:
 test:
     path:     /test
     defaults: { _controller: PlatBundle:Plat:test }
-
+plat_get:
+    path:     /get/{id}
+    defaults: { _controller: PlatBundle:Plat:getPlat }
+after_request:
+    path:     /afterRequest
+    defaults: { _controller: PlatBundle:Plat:afterRequest }

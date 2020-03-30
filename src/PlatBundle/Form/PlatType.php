@@ -27,7 +27,7 @@ class PlatType extends AbstractType
             ->add('description')
             ->add('difficulte', ChoiceType::class, array('label' => 'Difficulté ',
                 'choices' => array('Facile' => 'facile',
-                    'Intermédiaire' => 'intermediaire','Difficile' => 'difficiele'),
+                    'Intermédiaire' => 'intermediaire','Difficile' => 'difficile'),
                 'required' => true, 'multiple' => false ,))
             ->add('tempsPrepa')
             ->add('tempsCuisson')

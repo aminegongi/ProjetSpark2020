@@ -1,0 +1,302 @@
+
+{% extends 'frontOffice/base.html.Twig' %}
+{% block divType %}wrap sideBarRight sideBarShow menuStyle1 menuSmartScrollShow blogStyleExcerpt bodyStyleWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
+{% block content %}
+
+    <div class="content">
+
+        <section class="">
+            <div class="container">
+
+
+                <article class="blogStreampage odd emptyPostFormatIcon emptyPostInfo post">
+
+                    <h1 class="postTitle"> <img src="{{ asset('healthyfarm/images/dish3.png') }}" height="50" width="50"> {{plat.nom}}</h1>
+                    <div class="post Standard">
+                        <div class="sc_slider sc_slider_style_2 sc_slider_swiper sc_slider_controls swiper-container margin_bottom_0">
+                            <ul class="slides swiper-wrapper" data-settings="none">
+
+                                <li class="slider_image_4 swiper-slide" href="images/past1.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image0) }}" ></li>
+                                {% if plat.image1 is not null %}<li class="slider_image_5 swiper-slide" href="images/past2.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image1) }}"></li>{% endif %}
+                                {% if plat.image2 is not null %}<li class="slider_image_6 swiper-slide" href="images/past3.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image2) }}" style="height:500px;width: 900px"></li>{% endif %}
+                                {% if plat.image3 is not null %}<li class="slider_image_7 swiper-slide" href="images/past4.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image3) }}" style="height:500px;width: 900px"></li>{% endif %}
+                            </ul>
+                            <ul class="slider-control-nav">
+                                <li class="slide-prev">
+                                    <a class="icon-left-open-big" href="#"></a>
+                                </li>
+                                <li class="slide-next">
+                                    <a class="icon-right-open-big" href="#"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <section class="singlePage post">
+                    <div class="container-fluid">
+                        <article class="postContent">
+
+
+
+                            <div class="postTextArea">
+
+                                <div class="">
+                                    <blockquote>
+                                        <p><img src="{{ asset('healthyfarm/images/description.png') }}" height="23" width="23"> Description du plat :</p>
+                                    </blockquote>
+                                    <div class=" sc_columns  sc_columns_1 sc_columns_indent">
+                                        <div class=" sc_columns_item  sc_columns_item_coun_1 odd first" >
+
+                                            <h4 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">{{ plat.description }}</h4>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <blockquote>
+                                        <p><img src="{{ asset('healthyfarm/images/preparation.png') }}" height="23" width="23"> Preparation :</p>
+                                    </blockquote>
+                                    <div class=" sc_columns  sc_columns_2 sc_columns_indent">
+
+                                            {% set foo = plat.preparation|split('\n') %}
+                                            {% set i=1 %}
+                                            {% for fo in foo %}
+
+                                                <div class="page__toggle">
+                                                    <label class="toggle">
+                                                        <input class="toggle__input" type="checkbox" >
+                                                        <span class="toggle__label">
+                                                                <span class="toggle__text" style="line-height: 200%">{{ fo }}</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+
+                                                {% set i= i+1 %}
+                                                <br><br><br>
+                                            {% endfor  %}
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+    </div>
+    <div id="sidebar_main" class="widget_area sideBar">
+        <aside class="widget-first widgetWrap widget_categories">
+            <h4 class="title"> <img src="{{ asset('healthyfarm/images/dish.png') }}" height="20" width="20"> Specialité</h4>
+
+            <img alt="-3159" src="{{ asset(plat.specialite.image) }}" style="height:50px;width: 50px">
+        </aside><aside class="widget-first widgetWrap widget_recent_comments">
+            <h4 class="title"> <img src="{{ asset('healthyfarm/images/Difficulté.png') }}" height="15" width="15"> Difficulté</h4>
+
+            <div class="revWrap revStyle5">
+
+                <div class="post Standard">
+                    <div class="sc_section">
+                        <div class="sc_skills  sc_skills_bar sc_skills_horizontal" data-type="bar" data-dir="horizontal">
+
+                            <div class="sc_skills_item sc_skills_style_1 odd">
+                                <div class="sc_skills_count">
+
+                                    {%   set dataStop=0 %}
+                                    {% if( plat.difficulte | upper == "INTERMEDIAIRE" ) %}
+                                        {%   set dataStop=50 %}
+                                    {% elseif ( plat.difficulte | upper == "FACILE" ) %}
+                                        {%   set dataStop=25 %}
+                                    {% elseif ( plat.difficulte | upper == "DIFFICILE" ) %}
+                                        {%   set dataStop=75 %}
+                                    {% endif %}
+                                    <div class="sc_skills_total" data-start="0" data-stop="{{ dataStop }}" data-step="1" data-max="100" data-speed="39" data-duration="2964" data-ed="%">
+                                        <span>0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="sc_skills_info"><span class="sc_highlight sc_highlight_style_3"> {{plat.difficulte}}</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ul id="recentcomments">
+                {% for n in plat.note %}
+
+                    <li class="recentcomments">
+                        {{ n.descreption }}
+                    </li>
+                    <br>
+                {% endfor %}
+
+            </ul>
+
+        </aside><aside class="widget-first widgetWrap widget_archive">
+            <h4 class="title"><img src="{{ asset('healthyfarm/images/clock1.png') }}" height="20" width="20"> Temps</h4>
+            <ul>
+                <li>
+                    <a href='#'><img src="{{ asset('healthyfarm/images/clock.png') }}" height="17" width="17">  Temps de Préparation</a>&nbsp;({{plat.tempsPrepa}} min)
+                </li>
+                <li>
+                    <a href='#'><img src="{{ asset('healthyfarm/images/clock.png') }}" height="17" width="17"> Temps de Cuisine</a>&nbsp;({{plat.tempsCuisson}} min)
+                </li>
+                <div class="post Standard">
+
+
+                    <div class="sc_line sc_line_style_3 sc_line_style_dashed">
+                    </div>
+
+                </div>
+                <li>
+                    <a href='#'><img src="{{ asset('healthyfarm/images/clock.png') }}" height="17" width="17"> Temps Totale</a>&nbsp;({{plat.tempsCuisson+plat.tempsPrepa}} min)
+                </li>
+
+            </ul>
+        </aside>
+        <aside class="widget-first widgetWrap widget_categories">
+
+            <h4 class="title"> <img src="{{ asset('healthyfarm/images/ingredient.png') }}" height="20" width="20">Ingrédients</h4>
+            <br>
+            <input id="ingred"  type="hidden" value="{{plat.ingredient}}">
+            <div >Plat pour
+            <input type="number" id="myP" min="1" max="10" value="{{ plat.NbrPortion }}"  >
+            {{ plat.nomPortion }}</div>
+
+            <a id="myButton" href=""></a>
+
+            <p id="ingredientsF" >{{ingredientsInit |nl2br}} </p>
+
+        </aside>
+
+        <aside class="widget-first widgetWrap widget_recent_posts widget_trex_post">
+            <h4 class="title"> <img src="{{ asset('healthyfarm/images/usetensilesIcon.png') }}" height="20" width="20"> Usetensiles</h4>
+            <aside class="widget-first widgetWrap widget_flickr">
+                <div class="flickr_images">
+                    <img src="{{ asset('healthyfarm/images/usetensiles2.jpeg') }}" style="width: 60;height: 60">
+                </div>
+            </aside>
+            <br>
+            <div class="post_item">
+                <div class="post_wrapper">
+                    <div class=" sc_columns_item  sc_columns_item_coun_2 even" >
+                        <ul class="sc_list  sc_list_style_ul">
+                            {% for u in plat.ustensiles %}
+                                <li class="sc_list_item  odd first">
+                                    <span>{{ u.nom }}</span>
+                                </li>
+                            {% endfor %}
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </aside>
+        <aside class="widgetWrap widget_socials">
+            <h4 class="title">Follow us</h4>
+            <div class="widget_inner">
+                <div class="logo_descr">The theme is compatible with "All on One SEO Pack" & "SEO by Yoast".</div>
+                <ul class="social_style_images">
+                    <li>
+                        <a class="social_icons" href="https://www.facebook.com/pages/ThemeRex-Web-Studio/394746287348477" target="_blank">
+                            <img src="{{ asset('healthyfarm/images/facebook.png') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="https://twitter.com/Theme_REX" target="_blank">
+                            <img src="{{ asset('healthyfarm/images/twitter.png') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="https://www.behance.net/themerex" target="_blank">
+                            <img src="{{ asset('healthyfarm/images/behance.png') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="https://www.youtube.com/channel/UCnFisBimrK2aIE-hnY70kCA" target="_blank">
+                            <img src="{{ asset('healthyfarm/images/youtube.png') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="#" target="_blank">
+                            <img src="{{ asset('healthyfarm/images/gplus.png') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="#" target="_blank">
+                            <img src="images/dribbble.png" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="#" target="_blank">
+                            <img src="images/pinterest.png" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="#" target="_blank">
+                            <img src="images/linkedin.png" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="#" target="_blank">
+                            <img src="images/vimeo.png" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icons" href="#" target="_blank">
+                            <img src="images/rss.png" alt="" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+
+
+    <script>
+        $(document).ready(function(){
+            $("#myP").change( function(e){
+                var portion = document.getElementById("myP").value;
+                var ing = document.getElementById("ingred").value;
+
+                e.preventDefault();
+                $.ajax({
+                    url:        '{{ path('after_request') }}',
+                    type:       'POST',
+                    dataType:   'json',
+                    data: {portion:portion,ing:ing},
+                    async:      true,
+
+                    success: function(data) {
+
+
+                       var x = data.response2;
+                        x=x.replace(/\n/g,"<br>");
+                        $('#ingredientsF').html(x);
+
+
+
+                    },
+                });
+            });
+        });
+
+    </script>
+{% endblock %}
