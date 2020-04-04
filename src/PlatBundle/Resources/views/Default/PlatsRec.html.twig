@@ -1,5 +1,12 @@
 
 {% extends 'frontOffice/base.html.Twig' %}
+
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel='stylesheet' href='{{ asset('css/styleRechercheAv.css') }}' type='text/css' media='all' />
+        <script src="https://kit.fontawesome.com/cafc6f169f.js" crossorigin="anonymous"></script>
+        <link rel='stylesheet' href='{{ asset('css/flags.css') }}' type='text/css' media='all' />
+{% endblock %}
 {% block divType %}wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
 {% block content %}
     <div class="topTitle subCategoryStyle2">

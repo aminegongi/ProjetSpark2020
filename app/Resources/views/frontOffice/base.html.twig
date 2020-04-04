@@ -16,15 +16,13 @@
         <link rel='stylesheet' href='{{ asset('css/shortcodes.css') }}' type='text/css' media='all' />
         <link rel='stylesheet' href='{{ asset('css/responsive.css') }}' type='text/css' media='all' />
         <link rel='stylesheet' href='{{ asset('css/checkBoxPlatStyle.css') }}' type='text/css' media='all' />
-        <link rel='stylesheet' href='{{ asset('css/styleRechercheAv.css') }}' type='text/css' media='all' />
-        <script src="https://kit.fontawesome.com/cafc6f169f.js" crossorigin="anonymous"></script>
-        <link rel='stylesheet' href='{{ asset('css/flags.css') }}' type='text/css' media='all' />
+
     {% endblock %}
 
 </head>
 <body>
 {% block body %}
-    <body class="home page">
+    <body class="{% block classbody %}home page{% endblock %}">
 
     <div id="wrap" class="{% block divType %}{% endblock %}" >
         <div id="wrapBox" class="wrapBox">

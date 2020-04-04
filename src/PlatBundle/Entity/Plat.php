@@ -223,7 +223,7 @@ class Plat
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Specialite")
+     * @ORM\ManyToOne(targetEntity="specialite")
      * @ORM\JoinColumn(
      *     name="specialite",
      *     referencedColumnName="id",

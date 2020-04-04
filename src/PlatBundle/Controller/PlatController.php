@@ -410,4 +410,47 @@ class PlatController extends Controller
         return new JsonResponse(array('response2' => $chaineOutput));
     }
 
+    public function rechSimpleAction(Request $request)
+    {
+        /** @var $session Session */
+        $session = $request->getSession();
+
+        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $lastUsernameKey = Security::LAST_USERNAME;
+
+        // get the error if any (works with forward and redirect -- see below)
+        if ($request->attributes->has($authErrorKey)) {
+            $error = $request->attributes->get($authErrorKey);
+        } elseif (null !== $session && $session->has($authErrorKey)) {
+            $error = $session->get($authErrorKey);
+            $session->remove($authErrorKey);
+        } else {
+            $error = null;
+        }
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        }
+
+        // last username entered by the user
+        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
+
+        $csrfToken = $this->tokenManager
+            ? $this->tokenManager->getToken('authenticate')->getValue()
+            : null;
+        $csrfToken = $this->tokenManager;
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
+
+        $em=$this->getDoctrine()->getRepository(Plat::class);
+        $list = $em->findAll();
+
+        return $this->render('@Plat/Default/recherchePlat.html.twig', array(
+            'form'=>$form->createView(),
+            'csrf_token'=>$csrfToken,
+            'error'=>$error,
+            'last_username'=>$lastUsername,
+            'listPlats'=>$list
+        ));
+    }
 }

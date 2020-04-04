@@ -38,3 +38,7 @@ plat_rec:
 form_plats_rec:
     path:     /RemplirFormulaire
     defaults: { _controller: PlatBundle:Plat:showFormulaire }
+
+rechercheSimple:
+    path:     /recherche
+    defaults: { _controller: PlatBundle:Plat:rechSimple }
