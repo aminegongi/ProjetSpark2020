@@ -1,0 +1,51 @@
+
+{% extends 'frontOffice/base.html.Twig' %}
+{% block divType %}wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
+{% block content %}
+    <div class="content">
+        <section class="singlePage emptyPostFormatIcon emptyPostTitle emptyPostInfo page">
+            <article class="postContent">
+                <div class="postTextArea">
+
+
+
+                    <div class="sc_content mainWrap">
+
+                        <section class="section_padding_top_80 section_padding_bottom_50 with_border_bottom">
+                            <div class="container">
+                                <h3 class="sc_title sc_title_center sc_title_style_1 margin_bottom_50">
+                                    Alors ... Voici ce que nous vous recommandons!</h3>
+
+                                <div class=" sc_columns  sc_columns_3 sc_columns_indent">
+                                    {% for p in recPlats %}
+                                    <div class="sc_columns_item  sc_columns_item_coun_1 odd first">
+                                        <a href="get/{{ p.id }}">
+                                            <div class="sc_image sc_image_style_2 margin_bottom_25">
+                                                <img src="{{ asset(p.image0)}} " alt="">
+                                            </div>
+                                        </a>
+                                        <h6 class="sc_title sc_title_style_2 sc_title_center">{{ p.nom}} </h6>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </section>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

@@ -31,3 +31,10 @@ plat_get:
 after_request:
     path:     /afterRequest
     defaults: { _controller: PlatBundle:Plat:afterRequest }
+plat_rec:
+    path:     /VosPlatsRecommande
+    defaults: { _controller: PlatBundle:Plat:platsRec }
+    methods: [GET]
+form_plats_rec:
+    path:     /RemplirFormulaire
+    defaults: { _controller: PlatBundle:Plat:showFormulaire }

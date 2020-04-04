@@ -1,6 +1,7 @@
 <?php
 
 namespace PlatBundle\Controller;
+use PlatBundle\PlatBundle;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use PlatBundle\Entity\Plat;
@@ -242,6 +243,113 @@ class PlatController extends Controller
             'last_username'=>$lastUsername
         ));
     }
+
+
+    #Action qui envoi les plats recommendé vers la page
+    public function platsRecAction(Request $request){
+        /** @var $session Session */
+        $session = $request->getSession();
+
+        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $lastUsernameKey = Security::LAST_USERNAME;
+
+        // get the error if any (works with forward and redirect -- see below)
+        if ($request->attributes->has($authErrorKey)) {
+            $error = $request->attributes->get($authErrorKey);
+        } elseif (null !== $session && $session->has($authErrorKey)) {
+            $error = $session->get($authErrorKey);
+            $session->remove($authErrorKey);
+        } else {
+            $error = null;
+        }
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        }
+
+        // last username entered by the user
+        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
+
+        $csrfToken = $this->tokenManager
+            ? $this->tokenManager->getToken('authenticate')->getValue()
+            : null;
+        $csrfToken = $this->tokenManager;
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
+        #Recuperation Post
+        $meteo = array("cold"=>$request->query->get('cold'),"hot"=>$request->query->get('hot'));
+        $humeur = array("happy"=>$request->query->get('happy'),"tired"=>$request->query->get('tired'),"motivated"=>$request->query->get('motivated'),"sad"=>$request->query->get('sad'),"calm"=>$request->query->get('calm'));
+        $specialite =array("tunisienne"=>$request->query->get('tunisienne'),"italienne"=>$request->query->get('italienne'),"francaise"=>$request->query->get('francaise'),"turque"=>$request->query->get('turque'),"americaine"=>$request->query->get('americaine'),"syrienne"=>$request->query->get('syrienne'));
+        array_replace(array_values($specialite),array('on','on','on','on','on','on'));
+        //$specialite = array_map(function(array_values($specialite)) { return 'on'; }, $specialite);
+        $temps = array("tcuisson"=>$request->query->get('tcuisson'),"tprepa"=>$request->query->get('tprepa'),"ttotal"=>$request->query->get('tprepa')+$request->query->get('tcuisson'));
+        $typePlat=array("entre"=>$request->query->get('entre'),"plat principal"=>$request->query->get('platPrincipal'),"dessert"=>$request->query->get('dessert'),"boisson"=>$request->query->get('boisson'));
+        $hfr=$request->query->get('hfr');
+        $formulaireData= array($meteo,$humeur,$specialite,$temps,$typePlat,$hfr);
+        dump($formulaireData);
+
+        #Fin reccuperation
+        $em = $this->getDoctrine()->getManager();
+        $recPlats=array();
+        $count = ($platId = $this->getDoctrine()->getRepository(Plat::class)->AdvSearchPlat($formulaireData)[0])["count(*)"];
+        for ($i=0;$i<$count;$i++){
+            $platId = $this->getDoctrine()->getRepository(Plat::class)->AdvSearchPlat($formulaireData)[$i];
+
+            $plat = $em->getRepository(Plat::class)->find($platId["id"]);
+            array_push($recPlats,$plat);
+        }
+        #Traiter les autres cas !
+        dump($recPlats);
+        return $this->render('@Plat/Default/PlatRecommande.html.twig', array(
+            'form'=>$form->createView(),
+            'csrf_token'=>$csrfToken,
+            'error'=>$error,
+            'last_username'=>$lastUsername,
+            'recPlats'=>$recPlats
+        ));
+    }
+
+    public function showFormulaireAction(Request $request){
+        /** @var $session Session */
+        $session = $request->getSession();
+
+        $authErrorKey = Security::AUTHENTICATION_ERROR;
+        $lastUsernameKey = Security::LAST_USERNAME;
+
+        // get the error if any (works with forward and redirect -- see below)
+        if ($request->attributes->has($authErrorKey)) {
+            $error = $request->attributes->get($authErrorKey);
+        } elseif (null !== $session && $session->has($authErrorKey)) {
+            $error = $session->get($authErrorKey);
+            $session->remove($authErrorKey);
+        } else {
+            $error = null;
+        }
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        }
+
+        // last username entered by the user
+        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
+
+        $csrfToken = $this->tokenManager
+            ? $this->tokenManager->getToken('authenticate')->getValue()
+            : null;
+        $csrfToken = $this->tokenManager;
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        $form = $formFactory->createForm();
+        return $this->render('@Plat/Default/PlatsRec.html.twig', array(
+            'form'=>$form->createView(),
+            'csrf_token'=>$csrfToken,
+            'error'=>$error,
+            'last_username'=>$lastUsername
+        ));
+
+}
+
+
+
 
     #get un seul plat front
     public function getPlatAction(Request $request,$id)
