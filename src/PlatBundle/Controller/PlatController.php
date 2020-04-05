@@ -291,9 +291,9 @@ class PlatController extends Controller
         #Fin reccuperation
         $em = $this->getDoctrine()->getManager();
         $recPlats=array();
-        $count = ($platId = $this->getDoctrine()->getRepository(Plat::class)->AdvSearchPlat($formulaireData)[0])["count(*)"];
+       $count = ($platId = $this->getDoctrine()->getRepository(Plat::class)->AdvSearchPlat($formulaireData)[0]);
         for ($i=0;$i<$count;$i++){
-            $platId = $this->getDoctrine()->getRepository(Plat::class)->AdvSearchPlat($formulaireData)[$i];
+            $platId = $this->getDoctrine()->getRepository(Plat::class)->AdvSearchPlat($formulaireData)[1][$i];
 
             $plat = $em->getRepository(Plat::class)->find($platId["id"]);
             array_push($recPlats,$plat);

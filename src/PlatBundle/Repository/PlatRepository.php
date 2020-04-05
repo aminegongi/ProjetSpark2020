@@ -50,7 +50,7 @@ class PlatRepository extends \Doctrine\ORM\EntityRepository
         $conn = $this->getEntityManager()->getConnection();
         if($formulaireData[5]=='on') $hfr=3 ; else $hfr=0 ;
 
-        $sql="select plat.id, count(*)  from plat where (
+        $sql="select plat.id  from plat where (
 type in(SELECT id from typeplat WHERE nom in(".$this->chaine($formulaireData[4]).") )
 AND
 specialite in (SELECT id from specialite where nom in (".$this->chaine($formulaireData[2])."))
@@ -63,12 +63,14 @@ meteo=".$this->chaineMeteo($formulaireData[0])."
 AND
 plat.id in (SELECT id from humeur_plat where (humeur_plat.humeur_id in (select id from humeur where humeur.nom in(".$this->chaine($formulaireData[1]).")) ))
 
-    );
- LIMIT 3 ";
+    )
+ LIMIT 3;";
         dump($sql);
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll();
+        $fetch=$stmt->fetchAll();
+        dump(count($fetch));
+        return array(count($fetch),$fetch);
     }
 
 
