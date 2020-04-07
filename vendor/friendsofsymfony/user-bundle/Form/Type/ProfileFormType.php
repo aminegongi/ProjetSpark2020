@@ -49,7 +49,7 @@ class ProfileFormType extends AbstractType
             $constraintsOptions['groups'] = array(reset($options['validation_groups']));
         }
 
-        $builder->add('current_password', PasswordType::class, array(
+        $builder->add("yessine")->add('current_password', PasswordType::class, array(
             'label' => 'form.current_password',
             'translation_domain' => 'FOSUserBundle',
             'mapped' => false,

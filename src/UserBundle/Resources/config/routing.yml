@@ -6,3 +6,7 @@ register:
   path:     /register/
   defaults: { _controller: UserBundle:Registration:register }
 
+profile_edit:
+  path:     /profile/edit
+  defaults: { _controller: UserBundle:Profile:edit }
+
