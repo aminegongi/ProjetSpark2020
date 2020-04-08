@@ -10,4 +10,34 @@ namespace UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getMaladieOfUser($idUser){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql="select id,nomMaladie,type,description from maladie where (id in(select maladie_id from maladie_user where user_id=:u)  )";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array("u"=>$idUser));
+        $fetch=$stmt->fetchAll();
+        return $fetch ;
+    }
+
+    public function getAllMaladie(){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql="select * from maladie";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $fetch=$stmt->fetchAll();
+        return $fetch ;
+    }
+
+    public function addMaladieToUser($idUser,$idMaladie){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql="INSERT INTO `maladie_user`(`user_id`, `maladie_id`) VALUES (:u,:m)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array("u"=>$idUser,"m"=>$idMaladie));
+    }
+    public function deleteMaladieFromUser($idUser,$idMaladie){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql="DELETE FROM `maladie_user` WHERE (user_id=:u and maladie_id=:m)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array("u"=>$idUser,"m"=>$idMaladie));
+    }
 }

@@ -14,6 +14,7 @@ infosPerso:
   path:     /infosPerso
   defaults: { _controller: UserBundle:User:infosPerso }
 
+
 changePassword:
   path:     /changePassword
   defaults: { _controller: UserBundle:ChangePassword:changePassword }
@@ -23,3 +24,9 @@ changePassword:
 #  path:     /profile/edit
 #  defaults: { _controller: UserBundle:Profile:edit }
 
+after_request_add_maladie_to_user:
+  path:     /after_request_add_maladie_to_user
+  defaults: { _controller: UserBundle:User:afterRequestAddMaladie }
+after_request_delete_maladie_from_user:
+  path:     /after_request_delete_maladie_from_user
+  defaults: { _controller: UserBundle:User:afterRequestDeleteMaladie }
