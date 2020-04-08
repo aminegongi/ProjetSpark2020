@@ -10,4 +10,14 @@ namespace MaladieBundle\Repository;
  */
 class MaladieRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAlergies(){
+        $query = $this->createQueryBuilder('m')
+            ->where('m.type = alergie');
+        return $query;
+    }
+    public function getMaladies(){
+        $query = $this->createQueryBuilder('m')
+            ->where('m.type = maladie');
+        return $query;
+    }
 }

@@ -1,0 +1,116 @@
+{% extends 'frontOffice/base.html.twig' %}
+{% block content %}
+
+    <div class="wrapContent">
+        <div id="wrapWide" class="wrapWide">
+            <div class="content">
+                <section class="singlePage emptyPostFormatIcon emptyPostTitle emptyPostInfo page">
+                    <article class="postContent">
+                        <div class="postTextArea">
+
+                            <section class="section_padding_bottom_50">
+                                <div class="container">
+                                    <h3 class="sc_title sc_title_style_3 sc_title_center">Mon Profile</h3>
+                                    <article class="blogStreampage odd first emptyPostFormatIcon emptyPostInfo post">
+
+                                        <div class="post Standard">
+                                            <div class="sc_accordion_init sc_toggl sc_toggl_style_1 sc_toggl_icon_show sc_toggl_icon_right" data-active="0">
+                                                <div id="sc_accordion_q1" class="sc_toggl_item odd first">
+                                                    <div class="sc_toggl_title">Informations Personnelles</div>
+                                                    <div class="sc_toggl_content">
+                                                        <form action="{{ path('infosPerso') }}" method="post">
+                                                            <div class=" sc_columns  sc_columns_2 sc_columns_indent">
+                                                                <div class="sc_columns_item sc_form_username">
+                                                                    <label class="required" for="contact_form_username">Nom</label>
+                                                                    <input type="text" name="nom" id="contact_form_username" placeholder="{{ user.nom }}">
+                                                                </div>
+                                                                <div class="sc_columns_item sc_form_email">
+                                                                    <label class="required" for="contact_form_email">Prénom</label>
+                                                                    <input type="text" name="prenom" id="contact_form_email" placeholder="{{ user.prenom }}">
+                                                                </div>
+                                                                <div class="sc_columns_item sc_form_subj">
+                                                                    <label class="required" for="contact_form_subj">Sexe</label>
+
+                                                                    <select name="sexe" id="contact_form_subj" selected="{% if user.sexe %}{{ user.sexe }}{% endif %}" style="margin-bottom: 5%;">
+                                                                        <option {% if user.sexe == "masculin" %}selected{% endif %} value="masculin">Masculin</option>
+                                                                        <option {% if user.sexe == "feminin" %}selected{% endif %} value="feminin">Feminin</option>
+                                                                    </select><br>
+
+                                                                    <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">
+                                                                        <button type="submit" name="contact_submit" class="contact_form_submit">submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div id="sc_accordion_q2" class="sc_toggl_item even">
+                                                    <div class="sc_toggl_title">Modifier mon mot de passe</div>
+                                                    <div class="sc_toggl_content">
+{#                                                        <label class="required" for="contact_form_email">Ancien Mot de passe</label>#}
+{#                                                        <input type="text" name="email" id="contact_form_email" placeholder="">#}
+{#                                                        <label class="required" for="contact_form_email">Nouveau Mot de passe</label>#}
+{#                                                        <input type="text" name="email" id="contact_form_email" placeholder="">#}
+{#                                                        <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">#}
+{#                                                            <button type="submit" name="contact_submit" class="contact_form_submit">submit</button>#}
+{#                                                        </div>#}
+                                                        {{ form_start(formPass, { 'action': path('changePassword') }) }}
+                                                        {{ form_end(formPass) }}
+                                                    </div>
+
+                                                </div>
+                                                <div id="sc_accordion_q3" class="sc_toggl_item odd">
+                                                    <div class="sc_toggl_title">Mon Etat Sanitaire </div>
+                                                    <div class="sc_toggl_content">
+                                                        <div class=" sc_columns  sc_columns_2 sc_columns_indent">
+                                                            <div class=" sc_columns_item  sc_columns_item_coun_1 odd first">
+                                                                <p></p>
+                                                                <h5>Je souffre de ces maladies:</h5>
+                                                                <form action="">
+                                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                                                    <label for="vehicle1"> Corona 1</label><br>
+                                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                                    <label for="vehicle2">  Corona 2</label><br>
+                                                                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                                                    <label for="vehicle3">  Corona 1</label><br><br>
+                                                                    <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">
+                                                                        <button type="submit" name="contact_submit" class="contact_form_submit">submit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class=" sc_columns_item  sc_columns_item_coun_2 even">
+                                                                <p></p>
+                                                                <h5>Je suis allergique à :</h5>
+                                                                <form action="/action_page.php">
+                                                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                                                    <label for="vehicle1"> I have a bike</label><br>
+                                                                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                                    <label for="vehicle2"> I have a car</label><br>
+                                                                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                                                    <label for="vehicle3"> I have a boat</label><br><br>
+                                                                    <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">
+                                                                        <button type="submit" name="contact_submit" class="contact_form_submit">submit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </section>
+
+
+
+
+
+
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

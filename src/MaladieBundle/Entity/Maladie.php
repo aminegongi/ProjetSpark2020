@@ -43,6 +43,9 @@ class Maladie
     private $type;
 
 
+
+
+
     /**
      * Get id
      *

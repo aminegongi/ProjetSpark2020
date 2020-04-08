@@ -63,6 +63,34 @@ class User extends BaseUser
      */
     protected $photo;
 
+    /**
+     * @return mixed
+     */
+    public function getMaladie()
+    {
+        return $this->maladie;
+    }
+
+    /**
+     * @param mixed $maladie
+     */
+    public function setMaladie($maladie)
+    {
+        $this->maladie = $maladie;
+    }
+
+
+    /**
+     * Many users have Many maladies.
+     * @ORM\ManyToMany(targetEntity="\MaladieBundle\Entity\Maladie")
+     * @ORM\JoinTable(name="maladie_user",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="maladie_id", referencedColumnName="id")}
+     *      )
+     */
+
+    private $maladie;
+
 
     /**
      * Get id
