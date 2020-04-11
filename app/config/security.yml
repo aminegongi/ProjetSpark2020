@@ -28,3 +28,19 @@ security:
 
             logout:       true
             anonymous:    true
+
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/plat/new, role: ROLE_ADMIN }
+        - { path: ^/plat/$, role: ROLE_ADMIN }
+        - { path: ^/plat/['0-9']*/show, role: ROLE_ADMIN }
+        - { path: ^/plat/['0-9']*/edit, role: ROLE_ADMIN }
+        - { path: ^/plat/note/, role: ROLE_ADMIN }
+        - { path: ^/plat/specialite, role: ROLE_ADMIN }
+        - { path: ^/plat/ustensiles, role: ROLE_ADMIN }
+        - { path: ^/plat/typeplat, role: ROLE_ADMIN }
+        - { path: ^/maladie, role: ROLE_ADMIN }
