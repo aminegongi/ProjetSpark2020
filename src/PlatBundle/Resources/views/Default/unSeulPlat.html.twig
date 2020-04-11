@@ -130,16 +130,33 @@
                 </div>
 
             </div>
-            <ul id="recentcomments">
-                {% for n in plat.note %}
+            {#-----Note selon etat sanitaire du utlisaeur-----#}
+            {% if user is not null %}
+                <ul id="recentcomments">
+                    {% for n in plat.note %}
+                       {# **noteName** = {{ n.nom }} <br>#}
+                        {% if n.nom[0:4]|upper =='NOTE' %}
+                            <li class="recentcomments">{{ n.descreption }}</li><br>
+                        {% endif %}
+                        {% for m in user.maladie %}
 
-                    <li class="recentcomments">
-                        {{ n.descreption }}
-                    </li>
-                    <br>
-                {% endfor %}
+                            {% if m.nomMaladie|upper ==n.nom |upper %}
+                                <li class="recentcomments">{{ n.descreption }}</li><br>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
 
-            </ul>
+                </ul>
+                {% else %}
+                    {% for n in plat.note %}
+                        {% if n.nom[0:4]|upper =='NOTE' %}
+                            <li class="recentcomments">{{ n.descreption }}</li><br>
+                        {% endif %}
+                    {% endfor %}
+                <a href="{{ path('login') }}">Connectez vous et editez votre profile pour qu'on puisse vous reccomender des plats selon votre etat </a>
+            {% endif %}
+            {#-----fin Note selon etat sanitaire du utlisaeur-----#}
+
 
         </aside><aside class="widget-first widgetWrap widget_archive">
             <h4 class="title"><img src="{{ asset('healthyfarm/images/clock1.png') }}" height="20" width="20"> Temps</h4>

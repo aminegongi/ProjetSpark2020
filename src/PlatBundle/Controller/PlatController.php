@@ -389,13 +389,15 @@ class PlatController extends Controller
         $chaineOutput=preg_replace_callback($pattern,  function ($matches) use($portion ) {
             return $matches[1]* $portion;
         }, $plat->getIngredient(), -1 );
+
         return  $this->render('@Plat/Default/unSeulPlat.html.twig',array(
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,
             'error'=>$error,
             'last_username'=>$lastUsername,
             'plat'=>$plat,
-            'ingredientsInit'=>$chaineOutput
+            'ingredientsInit'=>$chaineOutput,
+            'user'=>$this->getUser(),
         ));
     }
 
