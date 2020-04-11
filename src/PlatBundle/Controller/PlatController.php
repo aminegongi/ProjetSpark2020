@@ -240,7 +240,7 @@ class PlatController extends Controller
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,
             'error'=>$error,
-            'last_username'=>$lastUsername
+            'last_username'=>$lastUsername,'user'=>$this->getUser()
         ));
     }
 
@@ -305,7 +305,7 @@ class PlatController extends Controller
             'csrf_token'=>$csrfToken,
             'error'=>$error,
             'last_username'=>$lastUsername,
-            'recPlats'=>$recPlats
+            'recPlats'=>$recPlats,'user'=>$this->getUser()
         ));
     }
 
@@ -343,7 +343,7 @@ class PlatController extends Controller
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,
             'error'=>$error,
-            'last_username'=>$lastUsername
+            'last_username'=>$lastUsername,'user'=>$this->getUser()
         ));
 
 }
@@ -452,7 +452,7 @@ class PlatController extends Controller
             'csrf_token'=>$csrfToken,
             'error'=>$error,
             'last_username'=>$lastUsername,
-            'listPlats'=>$list
+            'listPlats'=>$list,'user'=>$this->getUser()
         ));
     }
 }

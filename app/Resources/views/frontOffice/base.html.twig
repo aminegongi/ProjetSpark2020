@@ -55,10 +55,11 @@
                                     </ul>
                                 </li>
                                 <li class="usermenuLogin">
-                                    {% if form is defined %}
+                                    {% if user is null %}
                                     <a href="#user-popUp" class="user-popup-link">Login</a>
                                     {% else %}
-                                    <a href="{{ path('fos_user_security_logout') }}" class="" style="color: ">Logout</a>
+                                        <a href="{{ path('editProfile') }}">{{ user.username }}</a>
+                                        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
                                     {% endif %}
 
                                 </li>
