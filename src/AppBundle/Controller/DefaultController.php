@@ -34,7 +34,7 @@ class DefaultController extends Controller
         }
         else
         {
-            return $this->redirectToRoute("fos_user_profile_show");
+            return $this->redirectToRoute("homepage");
         }
     }
 

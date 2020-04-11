@@ -22,12 +22,10 @@ class UserController extends Controller
     public function editProfileAction(){
 
         if(!$this->getUser()){
-
             return $this->redirectToRoute('login');
         }
         $formFactory = $this->get('fos_user.change_password.form.factory');
         $formPass = $formFactory->createForm();
-        $formPass->add('go', SubmitType::class);
         $user = $this->getDoctrine()->getRepository(User::class)->find($this->getUser()->getId());
         $userMaladie= $this->getDoctrine()->getRepository(User::class )->getMaladieOfUser($this->getUser()->getId());
         $allMaladie= $this->getDoctrine()->getRepository(User::class )->getAllMaladie();

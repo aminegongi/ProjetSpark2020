@@ -54,6 +54,7 @@ class ChangePasswordController extends BaseController
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
+
         $formFactory = $this->get('fos_user.change_password.form.factory');
         $form = $formFactory->createForm();
         $form->setData($user);
