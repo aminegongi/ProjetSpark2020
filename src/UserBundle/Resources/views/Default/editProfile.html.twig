@@ -47,15 +47,15 @@
                                                 <div id="sc_accordion_q2" class="sc_toggl_item even">
                                                     <div class="sc_toggl_title">Modifier mon mot de passe</div>
                                                     <div class="sc_toggl_content">
-{#                                                        <label class="required" for="contact_form_email">Ancien Mot de passe</label>#}
-{#                                                        <input type="text" name="email" id="contact_form_email" placeholder="">#}
-{#                                                        <label class="required" for="contact_form_email">Nouveau Mot de passe</label>#}
-{#                                                        <input type="text" name="email" id="contact_form_email" placeholder="">#}
-{#                                                        <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">#}
-{#                                                            <button type="submit" name="contact_submit" class="contact_form_submit">submit</button>#}
-{#                                                        </div>#}
+
                                                         {{ form_start(formPass, { 'action': path('changePassword') }) }}
-                                                        <input type="submit" value="confirmer">
+                                                        {{ form_row(formPass.current_password,{'label': 'Ancien mot de passe' } )   }}
+                                                        {{ form_row(formPass.plainPassword.first,{'label': 'Nouveau mot de passe'} ) }}
+                                                        {{ form_row(formPass.plainPassword.second,{'label': 'Rettapez le nouveau mot de passe'} ) }}
+                                                        <br>
+                                                        <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">
+                                                            <button type="submit" name="contact_submit" class="contact_form_submit">submit</button>
+                                                        </div>
                                                         {{ form_end(formPass) }}
                                                     </div>
 
