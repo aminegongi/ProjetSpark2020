@@ -236,6 +236,7 @@ class PlatController extends Controller
         $csrfToken = $this->tokenManager;
         $formFactory = $this->get('fos_user.registration.form.factory');
         $form = $formFactory->createForm();
+        dump($csrfToken);
         return $this->render('@Plat/Default/test.html.twig', array(
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,

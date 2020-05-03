@@ -1,10 +1,277 @@
-<h2>Hedhi page d'acceuil</h2>
-<a href="{{ path('form_plats_rec') }}">recherche avancée </a>
-<br>
-<a href="{{ path('rechercheSimple') }}">recherche simple </a>
-<br>
-<a href="#">Créer un compte ou se connecter  </a>
-<br>
-<a href="#">Qui sommes nous </a>
-<br>
-<a href="#">contacter nous  </a>
+{% extends 'frontOffice/base.html.Twig' %}
+{% block classbody %}page{% endblock %}
+{% block divType %}wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
+{% block content %}
+    <div id="mainslider_1" class="sliderHeader staticSlider slider_engine_revo mainslider_1">
+        <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+            <div id="rev_slider_1_1" class="rev_slider fullwidthabanner">
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+                        <!-- MAIN IMAGE -->
+                        <img src="{{ asset('healthyfarm/js/vendor/revslider/rs-plugin/images/transparent.png') }}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-fade"
+                             data-x="-51"
+                             data-y="center" data-voffset="-71"
+                             data-speed="300"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                        >
+                            <img src="{{ asset('images/frontOffice/food.png') }}" alt="">
+                        </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption black tp-fade tp-resizeme"
+                             data-x="125"
+                             data-y="center" data-voffset="0"
+                             data-speed="300"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                        >
+                            <span class="rs_text_style_1">Si vous avez du mal à trouver les bonnes recettes pour votre état de santé<br/> .. Ce site est pour vous!</span>
+                        </div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+                        <!-- MAIN IMAGE -->
+                        <img src="{{ asset('healthyfarm/js/vendor/revslider/rs-plugin/images/transparent.png') }}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-fade"
+                             data-x="center" data-hoffset="0"
+                             data-y="center" data-voffset="100"
+                             data-speed="300"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                        >
+                            <img src="{{ asset('images/frontOffice/2430x1608.png') }}" alt="" data-ww="1900" data-hh="1257">
+                        </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption black xs_position_1 tp-fade tp-resizeme"
+                             data-x="right" data-hoffset="-294"
+                             data-y="center" data-voffset="-46"
+                             data-speed="300"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                        >
+                            <h1 class="rs_text_color_1">Vous essayez de suivre un régime? </h1>
+                        </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption black tp-fade tp-resizeme"
+                             data-x="right" data-hoffset="-200"
+                             data-y="center" data-voffset="40"
+                             data-speed="300"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                        >
+														<span class="rs_text_style_1">
+
+														Essayez notre cuisine qui offre beaucoup de  </span>
+                            <h3 class="rs_text_color_1">..."Healthy Food"</h3>
+                        </div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+                        <!-- MAIN IMAGE -->
+                        <img src="{{ asset('healthyfarm/js/vendor/revslider/rs-plugin/images/transparent.png') }}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-fade"
+                             data-x="center" data-hoffset="0"
+                             data-y="center" data-voffset="0"
+                             data-speed="300"
+                             data-start="500"
+                             data-easing="Power3.easeInOut"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                        >
+                            <img src="{{ asset('images/frontOffice/food.png') }}" alt="" data-ww="1890" data-hh="1260">
+                        </div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer"></div>
+            </div>
+        </div>
+    </div>
+    <section class="section_padding_top_80 section_padding_bottom_50 with_border_bottom">
+        <div class="container">
+            <h4 class="isotopeTitle">
+                Envie de cuisiner ? Recherchez votre recette ici! </h4>
+            <a href="{{ path('form_plats_rec') }}" class="sc_button sc_button_style_2 with_bg_color_1 sc_button_skin_dark sc_button_style_bg sc_button_size_big"> <i class="icon-search"></i>  Rechercher  </a>
+        </div>
+    </section>
+    <section class="masonryStyle isotopeWrap portfolio_big" data-foliosize="600">
+        <article class="isotopeItem post_format_standard isw_1 odd" data-postid="3629" data-wdh="620" data-hgt="620" data-incw="1" data-inch="1"
+        >
+            <div data-url="ajax/block1.html" class="isotopeItemWrap">
+                <div class="thumb">
+                    <img src="{{ asset('images/frontOffice/tajine.png') }}" alt="Gluten-Free Baked Goods">
+                </div>
+                <div class="isotopeRating" title="Rating: 4.5 from 5">
+                    <span class="rInfo">4.5</span>
+                    <span class="rDelta">
+																				<span class="icon-star"></span>
+																			</span>
+                </div>
+                <div class="isotopeMore icon-down-open-big">
+                </div>
+                <div class="isotopeContentWrap">
+                    <div class="isotopeContent">
+                        <h4 class="isotopeTitle">
+                            Recettes tunisiennes
+                        </h4>
+                        <div class="isotopeExcerpt">
+                            savourez le goût nord-africain avec les meilleurs plats tunisiens...</div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="isotopeItem post_format_standard isw_1 even" data-postid="3627" data-wdh="620" data-hgt="620" data-incw="1" data-inch="1"
+        >
+            <div data-url="ajax/block2.html" class="isotopeItemWrap">
+                <div class="thumb">
+                    <img src="{{ asset('images/frontOffice/dolmas.png') }}" alt="Healthy Food Guide">
+                </div>
+                <div class="isotopeRating" title="Rating: 4.1 from 5">
+                    <span class="rInfo">4.1</span>
+                    <span class="rDelta">
+																				<span class="icon-star"></span>
+																			</span>
+                </div>
+                <div class="isotopeMore icon-down-open-big">
+                </div>
+                <div class="isotopeContentWrap">
+                    <div class="isotopeContent">
+                        <h4 class="isotopeTitle">
+                            Recettes turques
+                        </h4>
+                        <div class="isotopeExcerpt">N'allez pas loin..ici la cuisine turque est à la portée de vos mains...</div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="isotopeItem post_format_standard isw_1 odd last" data-postid="3625" data-wdh="620" data-hgt="620" data-incw="1" data-inch="1"
+        >
+            <div data-url="ajax/block3.html" class="isotopeItemWrap">
+                <div class="thumb">
+                    <img src="{{ asset('images/frontOffice/Hunts_Turkey.png') }}" alt="Organic &#038; Natural">
+                </div>
+                <div class="isotopeRating" title="Rating: 3.6 from 5">
+                    <span class="rInfo">3.6</span>
+                    <span class="rDelta">
+																				<span class="icon-star"></span>
+																			</span>
+                </div>
+                <div class="isotopeMore icon-down-open-big">
+                </div>
+                <div class="isotopeContentWrap">
+                    <div class="isotopeContent">
+                        <h4 class="isotopeTitle">
+                            Recettes américaines</h4>
+                        <div class="isotopeExcerpt">Passionné de saveur? Goûter les plats américains le plus divers...</div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <div class="sc_content mainWrap">
+
+
+
+        <section class="section_padding_top_80 section_padding_bottom_60 with_border_bottom">
+            <div class="container-fluid">
+                <div class="sc_columns sc_columns_style_1 sc_columns_3 sc_columns_indent">
+                    <div class=" sc_columns_item  sc_columns_item_coun_1 odd first" >
+                        <h3 class="sc_title sc_title_style_3 margin_bottom_30">
+                            Lasagne</h3>
+                        <div class="sc_image sc_image_style_2 margin_bottom_25">
+                            <img  src="{{ asset('images/frontOffice/lasagne1.png') }}" alt="" />
+                        </div>
+                        <p>
+                            Les lasagnes c’est sans doute le plat qui s’est le mieux exporté d’Italie en France et dans le monde. .</p>
+                        <a href="#" class="sc_button margin_top_5 sc_button_skin_dark sc_button_style_bg sc_button_size_medium" >Voir la recette</a>
+                    </div>
+                    <div class=" sc_columns_item  sc_columns_item_coun_2 even" >
+                        <h3 class="sc_title sc_title_style_3 margin_bottom_30">
+                            Pancakes</h3>
+                        <div class="sc_image sc_image_style_2 margin_bottom_25">
+                            <img  src="{{ asset('images/frontOffice/pancakee.png') }}" alt="" />
+                        </div>
+                        <p>
+                            Un dessert tres moilleux et sur tout délicuex qui peut aussi etre servis pour le petit déjeuner..</p>
+                        <a href="#" class="sc_button margin_top_5 sc_button_skin_dark sc_button_style_bg sc_button_size_medium" >Voir la recette</a>
+                    </div>
+                    <div class=" sc_columns_item  sc_columns_item_coun_3 odd" >
+                        <h3 class="sc_title sc_title_style_3 margin_bottom_30">
+                            Salade tunisienne</h3>
+                        <div class="sc_image sc_image_style_2 margin_bottom_25">
+                            <img  src="{{ asset('images/frontOffice/Salade.png') }}" alt="" />
+                        </div>
+                        <p>
+                            Une salade à base de tomate et oignon, une recette qui ne prend que 10 minutes pour la préparer..</p>
+                        <a href="#" class="sc_button margin_top_5 sc_button_skin_dark sc_button_style_bg sc_button_size_medium" >Voir la recette</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section_padding_top_80 section_padding_bottom_60">
+            <div class="container-fluid">
+                <div class="sc_columns sc_columns_style_1 sc_columns_3 sc_columns_indent">
+                    <div class=" sc_columns_item  sc_columns_item_coun_1 odd first" >
+                        <h3 class="sc_title sc_title_style_3 margin_bottom_30">Des recettes spéciales pour le Ramadan:</h3>
+                        <div class="sc_image sc_image_style_2 margin_bottom_25">
+                            <img  src="{{ asset('images/frontOffice/ram (1).png') }}" alt="" />
+                        </div>
+                        <p>
+                            Profitez de ce mois avec ces recettes délicieuses et saines..</p>
+                        <a href="#" class="sc_button sc_button_style_2 sc_button_skin_dark sc_button_style_line sc_button_size_medium" >Voir plus</a>
+                    </div>
+                    <div class=" sc_columns_item  sc_columns_item_coun_2 even" >
+                        <h3 class="sc_title sc_title_style_3 margin_bottom_30">L'été est là!</h3>
+                        <div class="sc_image sc_image_style_2 margin_bottom_25">
+                            <img  src="{{ asset('images/frontOffice/summer.png') }}" alt="" />
+                        </div>
+                        <p>
+                            Rafraîchissez-vous avec ces recettes pour l'été..</p>
+                        <a href="#" class="sc_button sc_button_style_2 sc_button_skin_dark sc_button_style_line sc_button_size_medium" >Voir plus</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section_padding_top_80">
+            <div class="container">
+                <h3 class="sc_title sc_title_center sc_title_style_1 margin_bottom_50"> </h3>
+
+            </div>
+        </section>
+
+    </div>
+{% endblock %}
