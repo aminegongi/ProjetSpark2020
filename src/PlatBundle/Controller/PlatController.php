@@ -287,7 +287,7 @@ class PlatController extends Controller
         $typePlat=array("entre"=>$request->query->get('entre'),"plat principal"=>$request->query->get('platPrincipal'),"dessert"=>$request->query->get('dessert'),"boisson"=>$request->query->get('boisson'));
         $hfr=$request->query->get('hfr');
         $formulaireData= array($meteo,$humeur,$specialite,$temps,$typePlat,$hfr);
-        dump($formulaireData);
+        //dump($formulaireData);
 
         #Fin reccuperation
         $em = $this->getDoctrine()->getManager();
@@ -300,7 +300,7 @@ class PlatController extends Controller
             array_push($recPlats,$plat);
         }
         #Traiter les autres cas !
-        dump($recPlats);
+        //dump($recPlats);
         return $this->render('@Plat/Default/PlatRecommande.html.twig', array(
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,

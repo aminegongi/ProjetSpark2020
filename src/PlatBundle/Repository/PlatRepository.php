@@ -65,11 +65,11 @@ plat.id in (SELECT id from humeur_plat where (humeur_plat.humeur_id in (select i
 
     )
  LIMIT 3;";
-        dump($sql);
+        //dump($sql);
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $fetch=$stmt->fetchAll();
-        dump(count($fetch));
+        //dump(count($fetch));
         return array(count($fetch),$fetch);
     }
 
