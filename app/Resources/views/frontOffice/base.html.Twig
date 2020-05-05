@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
     <title>{% block title %}Ukla{% endblock %}</title>
+
+    <!-- Hotjar Tracking Code for www.ukla.tn -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1797347,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+
     {% block stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
         <link rel='stylesheet' href='{{ asset('js/vendor/swiper/idangerous.swiper.css') }}' type='text/css' media='all' />
@@ -86,11 +100,11 @@
                         </div>
                     </div>
                     <div class="logoHeader">
-                        <a href="index.html">
-                            <img src="images/162x55.png" alt="">
+                        <a href="{{ path('homepage') }}">
+                            <img src="{{ asset('images/logo_ukla270ko.jpg') }}" alt="Logo Ukla">
                         </a>
                     </div>
-                    <h1 class="subTitle">UKLA</h1>
+                    {#<h1 class="subTitle">UKLA</h1>#}
                     <h5 class="sc_title sc_title_center sc_title_style_1 margin_bottom_50">
                         Bienvenue dans votre propre cuisine.</h5>
                 </header>
@@ -228,7 +242,7 @@
             </div>
         </div>
     {% endif %}
-</body>
+    </body>
 
 {% endblock %}
 {% block javascripts %}
