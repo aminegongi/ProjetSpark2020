@@ -17,8 +17,8 @@ class MaladieType extends AbstractType
     {
         $builder->add('nomMaladie')->add('description', TextareaType::class, array('required'=>false))->add('type', ChoiceType::class, [
             'choices'  => [
-                'Alergie' => "alergie",
-                'Maladie' => "maladie",
+                'Allergie' => "Allergie",
+                'Maladie' => "Maladie",
 
             ],
         ]);
