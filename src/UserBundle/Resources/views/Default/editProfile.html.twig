@@ -127,7 +127,7 @@
             };
         };
 
-        var maladies = [{% for ma in allMaladie %}   '{{ ma["nomMaladie"] }}',{% endfor %}
+        var maladies = [{% for ma in allMaladie %}   "{{ ma["nomMaladie"] |raw}}",{% endfor %}
         ];
 
         $('#the-basics .typeahead').typeahead({
@@ -141,11 +141,12 @@
             });
     </script>
     <script type="text/javascript">
-        var maladiesNamesArray=[{% for ma in allMaladie %}   '{{ ma["nomMaladie"] }}',{% endfor %}];
+        var maladiesNamesArray=[{% for ma in allMaladie %}   "{{ ma["nomMaladie"] |raw }}",{% endfor %}];
         var maladiesIdsArray=[{% for ma in allMaladie %}   '{{ ma["id"] }}',{% endfor %}];
         function addFunction()
             { //alert('clicked');
                 var maladie = $( "#maladieInput" ).val();
+                //alert(maladie);
                 var indexOfMaladie =maladiesNamesArray.indexOf(maladie) ;
                 //alert( maladiesIdsArray[indexOfMaladie]);
                 $.ajax({
