@@ -56,7 +56,7 @@ class UserController extends Controller
 
     public function afterRequestAddMaladieAction(Request $request){
         $idMaladie = $request->get('idMaladie');
-        dump($idMaladie);
+        //dump($idMaladie);
         $this->getDoctrine()->getRepository(User::class )->addMaladieToUser($this->getUser()->getId(),$idMaladie);
 
         return new JsonResponse();;
