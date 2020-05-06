@@ -7,7 +7,7 @@
         <h3 class="title-3 m-b-30">
            </i>Détails du plat</h3>
 
-        <div class="table-responsive table-data" style="height: 50%">
+        <div class="table-responsive table-data" >
             <table class="table">
                 <thead>
                 <tr>
@@ -15,21 +15,19 @@
                     <td>nom</td>
                     <td>specialité</td>
                     <td>type</td>
-                    <td>Déscription</td>
+
                     <td>Difficulte</td>
                     <td>Temps Prep.</td>
                     <td>Temps Cuiss.</td>
                     <td>HFR</td>
                     <td>Meteo</td>
                     <td>Humeur</td>
-                    <td>Préparation</td>
+
                     <td>A éviter</td>
                     <td>A reccomander</td>
                     <td>Unité</td>
                     <td>portion</td>
-                    <td>Ingrédients</td>
-                    <td>Note</td>
-                    <td>Ustensiles</td>
+
                     <td></td>
                 </tr>
                 </thead>
@@ -48,18 +46,13 @@
 
                     <td>
                         <div class="table-data__info">
-                            <img src="{{ asset(plat.specialite.image) }}">
+                            <img height="40" width="40" src="{{ asset(plat.specialite.image) }}">
                         </div>
                     </td>
 
                     <td>
                         <div class="table-data__info">
                             <h6>{{ plat.type.nom }}</h6>
-                        </div>
-                    </td>
-                    <td style="word-break:break-word;" >
-                        <div class="table-data__info"  >
-                            <h6 style="">{{ plat.description }}</h6>
                         </div>
                     </td>
                     <td>
@@ -94,11 +87,7 @@
                                 {% endfor %}</h6>
                         </div>
                     </td>
-                    <td style="word-break:break-word;">
-                        <div class="table-data__info">
-                            <h6>{{ plat.preparation | nl2br }}</h6>
-                        </div>
-                    </td>
+
                     <td>
                         <div class="table-data__info">
                             <h6>{% for hist in plat.aEviter %}
@@ -123,25 +112,9 @@
                             <h6>{{ plat.nbrPortion }}</h6>
                         </div>
                     </td>
-                    <td style="word-break:break-word;">
-                        <div class="table-data__info">
-                            <h6>{{ plat.ingredient }}</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="table-data__info">
-                            {% for hist in plat.note %}
-                                {{ hist.getNom }}
-                            {% endfor %}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="table-data__info">
-                            {% for hist in plat.ustensiles %}
-                                {{ hist.getNom }}
-                            {% endfor %}
-                        </div>
-                    </td>
+
+
+
                 </tr>
 
                 </tbody>
@@ -150,6 +123,74 @@
 
     </div>
         <br>
+
+        <div class="row">
+
+            <div class="col">
+                <section class="card">
+                    <div class="card-body text-secondary">
+                        <h4>Description : </h4><br>
+                        <p style="">{{ plat.description |nl2br }}</p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <section class="card">
+                    <div class="card-body text-secondary">
+                        <h4>Préparation : </h4><br>
+                        <p style="">{{ plat.preparation | nl2br }}</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <section class="card">
+                    <div class="card-body text-secondary">
+                        <h4>Ingrédients : </h4><br>
+                        <p style="">{{ plat.ingredient |nl2br }}</p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <section class="card">
+                    <div class="card-body text-secondary">
+                        <h4>Notes : </h4><br>
+                        <p style="">
+                            {% for hist in plat.note %}
+                               * {{ hist.getNom }} <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <section class="card">
+                    <div class="card-body text-secondary">
+                        <h4>ustensiles : </h4><br>
+                        <p style="">
+                            {% for hist in plat.ustensiles %}
+                               * {{ hist.getNom }} <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
         <h3 align="center"> <h3 class="title-3 m-b-30">
                 </i>Images</h3></h3>
         <br>

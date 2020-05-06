@@ -132,7 +132,7 @@ class Plat
     /**
      * Many plats have Many humeur.
      * @ORM\ManyToMany(targetEntity="Humeur")
-     * @ORM\JoinTable(name="Humeur_plat",
+     * @ORM\JoinTable(name="humeur_plat",
      *      joinColumns={@ORM\JoinColumn(name="Plat_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="humeur_id", referencedColumnName="id")}
      *      )
@@ -165,7 +165,7 @@ class Plat
     /**
      * Many plats have Many maladies a eviter.
      * @ORM\ManyToMany(targetEntity="\MaladieBundle\Entity\Maladie")
-     * @ORM\JoinTable(name="aEviter",
+     * @ORM\JoinTable(name="aeviter",
      *      joinColumns={@ORM\JoinColumn(name="Plat_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="maladie_id", referencedColumnName="id")}
      *      )
@@ -175,7 +175,7 @@ class Plat
     /**
      * Many plats have Many maladies a reccomander.
      * @ORM\ManyToMany(targetEntity="\MaladieBundle\Entity\Maladie")
-     * @ORM\JoinTable(name="aReccomander",
+     * @ORM\JoinTable(name="areccomander",
      *      joinColumns={@ORM\JoinColumn(name="Plat_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="Maladie_id", referencedColumnName="id")}
      *      )

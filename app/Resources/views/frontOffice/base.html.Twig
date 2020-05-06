@@ -75,7 +75,7 @@
                                         <a href="#user-popUp" class="user-popup-link">Se connecter</a>
                                     {% else %}
                                         <a href="{{ path('editProfile') }}">{{ user.username }}</a>
-                                        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                                        <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
                                     {% endif %}
                                 </li>
                             </ul>
