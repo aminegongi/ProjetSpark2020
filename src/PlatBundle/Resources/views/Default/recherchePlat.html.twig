@@ -19,12 +19,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" >
 
     <style>
-        .price{
+        .desc{
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
-        .price:hover{
+        .desc:hover{
             text-overflow: ellipsis;
             white-space: inherit;
             overflow: hidden;
@@ -56,14 +56,14 @@
                                     <a href="{{  path('plat_get', {'id':plat.id}) }}">
                                         <img src="{{asset( plat.image0 )}}" style="width: 200px; height: 140px;" class="attachment-shop_catalog" alt="{{plat.nom }}" />
                                         <h3>{{plat.nom }}</h3>
-                                        <span style="font-size: 14px;" class="price">
+                                        <p style="font-size: 14px;" class="desc">
                                             {{plat.description }}
-                                        </span>
-                                        <span style="font-size: 13px; color: lightgray ;">
+                                        </p>
+                                        <p style="font-size: 13px; color: gray ;">
                                             <i class="fa fa-clock-o"> </i> {{plat.tempsPrepa + plat.tempsCuisson }} minutes
-                                        </span>
+                                        </p>
                                     </a>
-                                    <a href="#Noaction" class="fa fa-heart" style="font-size: 18px; color:crimson; margin-top: 20px;"> Favoris</a>
+                                    {#<a href="#Noaction" class="fa fa-heart" style="font-size: 18px; color:crimson; margin-top: 20px;"> Favoris</a>#}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -98,26 +98,29 @@
                     <a>Par Type de plat</a>
                     <ul class='children'>
                         {# yetzedou mil base :) #}
-                        <li class="">
-                            <input type="checkbox" value="base" /> yetzedou mil Base
-                        </li>
+                        {% for type in listType %}
+                            <li class="">
+                                <input type="checkbox" value="base" /> {{type.nom}}
+                            </li>
+                        {% endfor %}
                     </ul>
                 </li>
 
                 <li class="">
                     <a>Par Spécialité </a>
                     <ul class='children'>
-                        {# yetzedou mil base :) #}
-                        <li class="">
-                            <input type="checkbox" value="base" /> yetzedou mil Base
-                        </li>
+                        {% for spec in listSpec %}
+                            <li class="">
+                                <input type="checkbox" value="base" /> {{spec.nom}}
+                            </li>
+                        {% endfor %}
+
                     </ul>
                 </li>
 
                 <li class="">
                     <a>Par Healthy Food Rate</a>
                     <ul class='children'>
-                        {# yetzedou mil base :) #}
                         <li class="">
                             <input type="range" value="hfr" />
                         </li>
@@ -134,17 +137,15 @@
             </div>
         </aside>
 
+
         <aside class="widget-first widgetWrap widget_tag_cloud">
             <h4 class="title">Recette Aléatoire</h4>
-            <small>tawa mba3ed na3malha aléa Plat </small>
+
             <div class="tagcloud">
-                <a href="{{  path('plat_get', {'id':1}) }}">Kaftejji</a>
-                <a href="{{  path('plat_get', {'id':1}) }}">Lasagne</a>
-                <a href="{{  path('plat_get', {'id':1}) }}">Frite</a>
-                <a href="{{  path('plat_get', {'id':1}) }}">Couscous Poulet</a>
-                <a href="{{  path('plat_get', {'id':1}) }}">Soupe à la truffe</a>
-                <a href="{{  path('plat_get', {'id':1}) }}">Tarte au Citron</a>
-                <a href="{{  path('plat_get', {'id':1}) }}">Salade Tunisienne</a>
+                {% for i in 0..6  %}
+                    {% set ii = random(0, listPlats|length -1) %}
+                    <a href="{{  path('plat_get', {'id':listPlats[ii].id}) }}">{{ listPlats[ii].nom }}</a>
+                {% endfor %}
             </div>
         </aside>
     </div>

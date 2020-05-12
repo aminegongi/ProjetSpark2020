@@ -70,7 +70,6 @@ class PlatType extends AbstractType
 
 
 
-
     }/**
  * {@inheritdoc}
  */

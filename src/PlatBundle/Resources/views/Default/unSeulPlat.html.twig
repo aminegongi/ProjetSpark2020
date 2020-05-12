@@ -16,10 +16,10 @@
                         <div class="sc_slider sc_slider_style_2 sc_slider_swiper sc_slider_controls swiper-container margin_bottom_0">
                             <ul class="slides swiper-wrapper" data-settings="none">
 
-                                <li class="slider_image_4 swiper-slide" href="images/past1.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image0) }}" ></li>
-                                {% if plat.image1 is not null %}<li class="slider_image_5 swiper-slide" href="images/past2.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image1) }}"></li>{% endif %}
-                                {% if plat.image2 is not null %}<li class="slider_image_6 swiper-slide" href="images/past3.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image2) }}" style="height:500px;width: 900px"></li>{% endif %}
-                                {% if plat.image3 is not null %}<li class="slider_image_7 swiper-slide" href="images/past4.jpg" data-theme="dark"><img alt="-3159" src="{{ asset(plat.image3) }}" style="height:500px;width: 900px"></li>{% endif %}
+                                <li class="slider_image_1 swiper-slide"  data-theme="dark"><img alt="{{plat.nom}}" src="{{ asset(plat.image0) }}" ></li>
+                                {% if plat.image1 is not null %}<li class="slider_image_2 swiper-slide"  data-theme="dark"><img alt="{{plat.nom}}" src="{{ asset(plat.image1) }}"></li>{% endif %}
+                                {% if plat.image2 is not null %}<li class="slider_image_3 swiper-slide"  data-theme="dark"><img alt="{{plat.nom}}" src="{{ asset(plat.image2) }}" style="height:500px;width: 900px"></li>{% endif %}
+                                {% if plat.image3 is not null %}<li class="slider_image_4 swiper-slide"  data-theme="dark"><img alt="{{plat.nom}}" src="{{ asset(plat.image3) }}" style="height:500px;width: 900px"></li>{% endif %}
                             </ul>
                             <ul class="slider-control-nav">
                                 <li class="slide-prev">

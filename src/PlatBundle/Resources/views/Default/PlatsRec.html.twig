@@ -6,6 +6,7 @@
         <link rel='stylesheet' href='{{ asset('css/styleRechercheAv.css') }}' type='text/css' media='all' />
         <script src="https://kit.fontawesome.com/cafc6f169f.js" crossorigin="anonymous"></script>
         <link rel='stylesheet' href='{{ asset('css/flags.css') }}' type='text/css' media='all' />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 {% endblock %}
 {% block divType %}wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
 {% block content %}
@@ -17,7 +18,7 @@
     <div class="content">
 
 
-        <form id="regForm" action="{{ path('plat_rec') }}" method="GET">
+        <form id="regForm" action="{{ path('plat_rec') }}" method="GET" style="padding: 0px; width: 80%;">
             <h4> Alors vous cherchez un plat , repondez à ces qq questions : </h4>
             <br>
 
@@ -28,7 +29,7 @@
                     <div class="column" style="background-color:transparent;">
                         <input type="checkbox" id="myCheckbox1" name="cold" />
                         <label class="labelWeather" style="height: auto;" for="myCheckbox1">
-                            <i class="far fa-snowflake fa-3x" style="color: royalblue;"></i>
+                            <img alt="Froid" src="{{ asset('gifRechAvanc/froid.gif') }}">
                             <h5>il fait Froid</h5>
                         </label>
                     </div>
@@ -36,7 +37,8 @@
                     <div class="column" style="background-color:transparent;">
                         <input type="checkbox" id="myCheckbox2" name="hot" />
                         <label class="labelWeather" style="height: auto;" for="myCheckbox2">
-                            <i class="fas fa-sun fa-3x" style="color: orange;"></i>
+                            {#<i class="fas fa-sun fa-3x" style="color: orange;"></i>#}
+                            <img alt="Froid" src="{{ asset('gifRechAvanc/chaud.gif') }}">
                             <h5>il fait Chaud</h5>
                         </label>
                     </div>
@@ -44,102 +46,114 @@
                 </div>
 
                 <h3>Comment vous sentez-vous aujourd'hui ?</h3>
-                <div class="row">
+                <div class="row  justify-content-center ">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
 
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox3" name="happy" />
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox3">
-                            <i class="fas fa-smile-beam fa-3x" style="color: #c56cf0;"></i>
-                            <h5>Happy</h5>
-                        </label>
+                        <div class="column" style="background-color:transparent;" >
+                            <input type="checkbox" id="myCheckbox3" name="happy" />
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox3">
+                                <img alt="Froid" src="{{ asset('gifRechAvanc/happy.gif') }}">
+                                <h5>Happy</h5>
+                            </label>
+                        </div>
                     </div>
-
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox4" name="tired" />
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox4">
-                            <i class="fas fa-grin-beam-sweat fa-3x" style="color: #ff9f1a;"></i>
-                            <h5>Tired</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox4" name="tired" />
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox4">
+                                <img alt="Froid" src="{{ asset('gifRechAvanc/tired.gif') }}">
+                                <h5>Tired</h5>
+                            </label>
+                        </div>
                     </div>
-
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox5" name="motivated" />
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox5">
-                            <i class="fas fa-grin-stars  fa-3x" style="color: #8adbbe;"></i>
-                            <h5>motivated</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox5" name="motivated" />
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox5">
+                                <img alt="Froid" src="{{ asset('gifRechAvanc/motivated.gif') }}">
+                                <h5>motivated</h5>
+                            </label>
+                        </div>
                     </div>
-
-                </div>
-                <div class="row">
-
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox6" name="sad" />
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox6">
-                            <i class="fas fa-sad-cry fa-3x" style="color: #ff3838;"></i>
-                            <h5>sad</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox6" name="sad" />
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox6">
+                                <img alt="Froid" src="{{ asset('gifRechAvanc/sad.gif') }}">
+                                <h5>sad</h5>
+                            </label>
+                        </div>
                     </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox7" name="calm" />
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox7">
+                                <img alt="Froid" src="{{ asset('gifRechAvanc/calm.gif') }}">
+                                <h5>calm</h5>
+                            </label>
+                        </div>
 
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox7" name="calm" />
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox7">
-                            <i class="fas fa-meh  fa-3x" style="color: #ffb8b8;"></i>
-                            <h5>calm</h5>
-                        </label>
                     </div>
-
-
-
                 </div>
 
             </div>
 
             <div class="tab">
                 <h3> les spécialités</h3>
-                <div class="row">
-
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox11"  name="tunisienne"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox11">
-                            <span class="flag flag-tn"></span>
-                            <h5>Tunisienne</h5>
-                        </label>
+                <div class="row justify-content-center ">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox11"  name="tunisienne"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox11">
+                                <span class="flag flag-tn"></span>
+                                <h5>Tunisienne</h5>
+                            </label>
+                        </div>
                     </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox12" name="italienne"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox12">
-                            <span class="flag flag-it"></span>
-                            <h5>italienne</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox12" name="italienne"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox12">
+                                <span class="flag flag-it"></span>
+                                <h5>italienne</h5>
+                            </label>
+                        </div>
                     </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox13" name="francaise"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox13">
-                            <span class="flag flag-fr"></span>
-                            <h5>française</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox13" name="francaise"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox13">
+                                <span class="flag flag-fr"></span>
+                                <h5>française</h5>
+                            </label>
+                        </div>
                     </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox14" name="turque" />
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox14">
-                            <span class="flag flag-tr"></span>
-                            <h5>Turque</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox14" name="turque" />
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox14">
+                                <span class="flag flag-tr"></span>
+                                <h5>Turque</h5>
+                            </label>
+                        </div>
                     </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox15" name="americaine"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox15">
-                            <span class="flag flag-us"></span>
-                            <h5>Américaine</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox15" name="americaine"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox15">
+                                <span class="flag flag-us"></span>
+                                <h5>Américaine</h5>
+                            </label>
+                        </div>
                     </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox16" name="syrienne"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox16">
-                            <span class="flag flag-sy"></span>
-                            <h5>Syrienne</h5>
-                        </label>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox16" name="syrienne"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox16">
+                                <span class="flag flag-sy"></span>
+                                <h5>Syrienne</h5>
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -169,50 +183,67 @@
                 <h4> il ne reste plus qu'une étape !</h4>
 
                 <h3> Type de plat</h3>
-                <div class="row">
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox21" name="entre"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox21">
-                            <!--<span class="flag flag-fr"></span>-->
-                            <h4 style="color:#80b500;">Entrée</h4>
-                        </label>
-                    </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox22" name="platPrincipal"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox22">
-                            <!--<span class="flag flag-fr"></span>-->
-                            <h4 style="color:#80b500;" >Plat Principal</h4>
-                        </label>
-                    </div>
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox23" name="dessert"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox23">
-                            <!--<span class="flag flag-fr"></span>-->
-                            <h4 style="color:#80b500;">Dessert</h4>
-                        </label>
+
+                <div class="row justify-content-center ">
+
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox21" name="entre"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox21">
+                                <!--<span class="flag flag-fr"></span>-->
+                                <h4 style="color:#80b500;">Entrée</h4>
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="column" style="background-color:transparent;">
-                        <input type="checkbox" id="myCheckbox24" name="boisson"/>
-                        <label class="labelWeather" style="height: auto;" for="myCheckbox24">
-                            <!--<span class="flag flag-fr"></span>-->
-                            <h4 style="color:#80b500;">Boisson</h4>
-                        </label>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox22" name="platPrincipal"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox22">
+                                <!--<span class="flag flag-fr"></span>-->
+                                <h4 style="color:#80b500;" >Plat Principal</h4>
+                            </label>
+                        </div>
                     </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox23" name="dessert"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox23">
+                                <!--<span class="flag flag-fr"></span>-->
+                                <h4 style="color:#80b500;">Dessert</h4>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="column" style="background-color:transparent;">
+                            <input type="checkbox" id="myCheckbox24" name="boisson"/>
+                            <label class="labelWeather" style="height: auto;" for="myCheckbox24">
+                                <!--<span class="flag flag-fr"></span>-->
+                                <h4 style="color:#80b500;">Boisson</h4>
+                            </label>
+                        </div>
+                    </div>
+
                 </div>
-
                 <br>
+            
 
-
-
-                <label class="container"><h4> Vous souhaitez recevoir des plats Healthy</h4>
-                    <input type="checkbox" checked="checked" name="hfr" id="healthy">
-                    <span class="checkmark"></span>
+                <label class="container">
+                    <div class="row" >
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <input type="checkbox" checked="checked" name="hfr" id="healthy">
+                            <span class="checkmark"></span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10">
+                            <h5> Vous souhaitez recevoir des plats Healthy</h5>
+                        </div>
+                    </div>
                 </label>
-
+                
             </div>
-
-
+            <br><br>
 
             <div style="overflow:auto;">
                 <div style="float:right;">
@@ -229,9 +260,6 @@
             </div>
 
         </form>
-
-
-
 
     </div>
 

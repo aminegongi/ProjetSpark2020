@@ -1,6 +1,8 @@
 <?php
 
 namespace PlatBundle\Controller;
+use PlatBundle\Entity\specialite;
+use PlatBundle\Entity\Typeplat;
 use PlatBundle\PlatBundle;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -448,12 +450,18 @@ class PlatController extends Controller
         $em=$this->getDoctrine()->getRepository(Plat::class);
         $list = $em->findAll();
 
+        $listSpec = $this->getDoctrine()->getRepository(specialite::class)->findAll();
+        $listType = $this->getDoctrine()->getRepository( Typeplat::class )->findAll();
+
         return $this->render('@Plat/Default/recherchePlat.html.twig', array(
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,
             'error'=>$error,
             'last_username'=>$lastUsername,
-            'listPlats'=>$list,'user'=>$this->getUser()
+            'user'=>$this->getUser(),
+            'listPlats'=>$list,
+            'listSpec'=>$listSpec,
+            'listType'=>$listType
         ));
     }
 }
