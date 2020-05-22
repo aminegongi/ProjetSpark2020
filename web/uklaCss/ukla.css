@@ -1,0 +1,43 @@
+.ukla{
+    position: fixed;
+    right:10px;
+    z-index: 999;
+    display: none;
+    top: 40px;
+}
+.uklaMsg{
+    width: 150px;
+    box-shadow: 6px 10px 20px 3px rgba(0, 0, 0, 0.23);
+    padding: 20px;
+    background-color: lightyellow;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+
+
+}
+.uklaMsg > a {
+    cursor: pointer;
+}
+.triangle{
+    content: ' ';
+    width: 0;
+    height: 0;
+    margin-top: -28px;
+    border: 15px solid;
+    border-color: transparent transparent transparent lightyellow;
+}
+.uklaBody{
+    display: block;
+
+}
+.uklaClose{
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    cursor: pointer;
+}
+.uklaBody > img{
+    height: 80px;
+width: 80px;
+}

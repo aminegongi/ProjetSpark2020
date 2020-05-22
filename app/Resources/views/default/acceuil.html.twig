@@ -269,9 +269,46 @@
         <section class="section_padding_top_80">
             <div class="container">
                 <h3 class="sc_title sc_title_center sc_title_style_1 margin_bottom_50"> </h3>
-
             </div>
         </section>
 
     </div>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script>
+    // init variables
+    var isClosed=true;
+</script>
+    <script>
+        //--begin script Connectez vous--
+        $(document).ready(function () {
+            // add state already asked
+            if ("{{ user }}"==''){
+                var element = "<a onclick='callLogin()'>Cliquez ici & Rejoignez Ukla !</a>" ;
+                ukla(element , "{{ asset('gifRechAvanc/calm.gif') }}",10);
+
+            }
+        });
+        function callLogin() {
+            $('.user-popup-link').click();
+        }
+        //--end script Connectez vous--
+    </script>
+
+    <script>
+         var asked= false;
+        $('.sc_content.mainWrap').hover(function () {
+                if(!asked){
+                    var element = "<a href='{{ path('form_plats_rec') }}'>Avez-vous faim? Cliquez ici et optez pour le recherche avancé de Ukla... </a>" ;
+                    asked= ukla(element , "{{ asset('gifRechAvanc/calm.gif') }}",10);
+
+                }
+
+            }, function () {
+                // out
+            }
+        );
+    </script>
+
 {% endblock %}

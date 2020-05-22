@@ -390,7 +390,7 @@ class PlatController extends Controller
         $pattern = '/#(([0-9]*)|([0-9]*.[0-9]*))#/';
         $portion=$plat->getNbrPortion();
         $chaineOutput=preg_replace_callback($pattern,  function ($matches) use($portion ) {
-            return $matches[1]* $portion;
+            return number_format($matches[1]* $portion/$portion,1);
         }, $plat->getIngredient(), -1 );
 
         return  $this->render('@Plat/Default/unSeulPlat.html.twig',array(
@@ -407,9 +407,10 @@ class PlatController extends Controller
     public function afterRequestAction(Request $request){
         $response = $request->get('portion');
         $response2 = $request->get('ing');
+        $portionInit = $request->get('portionInit');
         $pattern = '/#(([0-9]*)|([0-9]*.[0-9]*))#/';
-        $chaineOutput=preg_replace_callback($pattern,  function ($matches) use($response) {
-            return $matches[1]*$response;
+        $chaineOutput=preg_replace_callback($pattern,  function ($matches) use($response,$portionInit) {
+            return number_format($matches[1]*$response/$portionInit,1);
         }, $response2, -1 );
 
         return new JsonResponse(array('response2' => $chaineOutput));

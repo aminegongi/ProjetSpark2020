@@ -67,15 +67,17 @@
 
                                                         <aside class="widget-first widgetWrap widget_tag_cloud">
                                                             <h4 class="title">Vous etes sensibles aux:</h4>
-                                                            <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est</p>
+
+                                                            <p>Si vous êtes sensibles à une ou plusieurs maladies ou allergies alimentaires, n'hésitez pas à nous informer, nous vous donnons des consignes dans les prochains plats que vous choisissez dans Ukla, ainsi nous vous proposons des plats selon votre état dans votre prochaine recherche avancée. </p>
                                                             <div id="the-basics" style="margin-bottom: 50px;">
                                                                 <input class="typeahead " type="text" placeholder="Maladies Ou Allergies .." id="maladieInput">
-                                                                <i class="fas fa-plus fa-2x" style="color: #80b500;" id="validateMaladie" onclick='addFunction()'></i>
+                                                                <i class="fas fa-plus fa-2x hvr-grow" style="color: #80b500;" id="validateMaladie" onclick='addFunction()'></i>
                                                             </div>
 
                                                             <div class="tagcloud" >
                                                                 {% for m in maladies %}
                                                                 <a class='deleteTag' id="{{ m["id"] }}" onclick='myF(this.id)'>{{ m["nomMaladie"] }}</a>
+
                                                                 {% endfor %}
 
                                                             </div>
