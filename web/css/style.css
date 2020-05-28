@@ -2719,3 +2719,10 @@ ul.social_style_images li a:hover {opacity: 0.5; }
 .mejs-controls .mejs-time-rail .mejs-time-total, .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
     background: rgba(255,255,255,0.3);
 }
+p.errorText {
+	color: red;
+}
+a.deleteTag:hover{
+	background-color: #d11a2a;
+	cursor: pointer;
+}

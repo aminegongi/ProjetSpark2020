@@ -30,3 +30,6 @@ after_request_add_maladie_to_user:
 after_request_delete_maladie_from_user:
   path:     /after_request_delete_maladie_from_user
   defaults: { _controller: UserBundle:User:afterRequestDeleteMaladie }
+contactUs:
+  path:     /contactUs
+  defaults: { _controller: UserBundle:User:contactUs }

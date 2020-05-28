@@ -1,0 +1,152 @@
+{% extends 'frontOffice/base.html.Twig' %}
+{% block divType %}wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' href='{{ asset('css/contact.css') }}' type='text/css' media='all' />
+{% endblock %}
+{% block content %}
+    <!-- cafe -->
+    <div class="grid-container">
+
+
+        <div class="grid-item">
+            <h2 class="sc_title sc_title_style_3  margin_bottom_50" style=" text-align: center;">Bienvenue!</h2>
+            <p style="font-size: 17px; line-height: 3em;">
+                Chers invités,
+                </br>
+                Nous vous présentons amoureusement des biscuits et du thé pour qu'on <br>puisse parler
+                en bonne humeur!
+                Nous sommes honorés de vous avoir chez nous!
+                </br></p>
+
+            <img src="{{ asset('contact/spark.png') }}"  class="animate__animated animate__flash" style="margin-left: auto; height: 30px;"  >
+        </div>
+
+        <div class="grid-item">
+                <img src="{{ asset('contact/tee.jpg') }}" alt="Flowers" style="width:auto;">
+        </div>
+    </div>
+
+    <!-- presontons nou -->
+    <div class="grid-container">
+
+        <div class="grid-item">
+            <img src="{{ asset('contact/sparkle1.jpg') }}"  style="hei" class="animate__animated animate__flash animate__repeat-2 animate__delay-2s" >
+        </div>
+
+        <div class="grid-item">
+            <h3 class="sc_title sc_title_style_3 margin_top_50 margin_bottom_20;">Présentons Nous...</h3>
+            <p style="text-align:center;line-height: 2em; font-size: 15px;">
+                <br>
+                Nous sommes des étudiants faisant partie du club Engineers Spark Esprit, fondé en 2016.
+                <br>
+                Notre communauté  se propage sur plusieurs universités (Tekup, Isetcom, Sésame...)
+            </p>
+        </div>
+
+        <div class="grid-item">
+            <img src="{{ asset('contact/goal5.jpg') }}"   alt="">
+        </div>
+
+
+
+        <div class="grid-item">
+
+            <h3 class="sc_title sc_title_style_3 0 margin_bottom_20;">C'est Quoi Notre Mission?</h3>
+            <p style="text-align:center; line-height: 2em; font-size: 15px;">
+                Afin de nous préparer  à la vie entrepreneuriale on gère des projets et des événements.
+                <br>
+                Ukla fait partie de nos projet. On a penser à vous, et on a essayé de récolter les meilleures recettes </br>qui convient à votre humeur, votre temps libre, la météo et votre spécialité préférée!
+                <br>
+                De meme ,nous essayons de nous bien former par la participation à des workshops.
+            </p>
+        </div>
+
+
+        <div class="grid-item">
+            <br><br><br><br>
+
+            <img src="{{ asset('contact/message1.jpg') }}" class="animate__animated animate__heartBeat animate__delay-4s " >
+
+        </div>
+
+        <div class="grid-item">
+
+            <h3 class="sc_title sc_title_style_3 margin_top_50 margin_bottom_20;">Maintenant, c'est votre tour!</h3>
+            <p style="text-align:center; line-height: 2em; font-size: 15px;">
+                Laissez nous un message, partagez avec nous vos idées et vos remarques! <br> N'hésitez pas! <br>Nous serons ravis de recevoir vos messages!
+        </div>
+        <br>
+
+    </div>
+    <!-- message -->
+
+<div style="margin-right: 20% ; margin-left: 20%">
+                <h5 class="sc_title sc_title_style_3 margin_top_50 margin_bottom_20">Votre message...</h5>
+                <div class="sc_form contact_form_1">
+                    <form class="contact_1" method="post" action="include/contact-form.php">
+                        <div class="sc_columns_3 sc_columns_indent">
+                            <div class="sc_columns_item sc_form_username">
+                                <label class="required" for="contact_form_username">Votre Nom</label>
+                                <input type="text" name="name" id="contact_form_username">
+                            </div>
+                            <div class="sc_columns_item sc_form_email">
+                                <label class="required" for="contact_form_email">E-mail</label>
+                                <input type="text" name="email" id="contact_form_email">
+                            </div>
+
+
+
+                            <div class="sc_columns_item sc_form_subj">
+                                <label class="required" for="contact_form_subj">Subject</label>
+                                <!-- <input type="text" name="subject" id="contact_form_subj"> -->
+                                <select name="thelist" onChange="combo(this, 'theinput')" id="selectCategory">
+                                    <option>Expérience</option>
+                                    <option>Gestion</option>
+                                    <option>Réclamation</option>
+                                </select>
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div class="sc_form_message">
+                            <label class="required" for="contact_form_message">Votre message</label>
+                            <textarea  id="contact_form_message" class="textAreaSize" name="message"></textarea>
+                        </div>
+                        <div class="sc_form_button">
+                            <div class="sc_button sc_button_style_3 sc_button_skin_dark sc_button_style_bg sc_button_size_medium">
+                                <button type="submit" name="contact_submit" class="contact_form_submit">Valider</button>
+                            </div>
+                        </div>
+
+                        <div class="result sc_infobox"></div>
+                    </form>
+                </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    $(".contact_form_submit").click(function(){
+            e.preventDefault();
+            var name = $("#contact_form_username").text();
+            var mail =$("#contact_form_email").text();
+            var selectedCat = $("#selectCategory").children("option:selected").val();
+            var msg = $("#contact_form_message").text();
+            $.ajax({
+                url:        '{{ path('contactUs') }}',
+                type:       'POST',
+                dataType:   'json',
+                data: {name:name,mail:mail,selectedCat:selectedCat,msg:msg},
+                async:      true,
+
+                success: function(data) {
+
+                },
+            });
+    });
+</script>
+{% endblock %}

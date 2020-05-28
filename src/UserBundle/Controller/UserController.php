@@ -68,4 +68,12 @@ class UserController extends Controller
 
         return new JsonResponse();;
     }
+    public function contactUsAction(Request $request){
+        $mail = $request->get('mail');
+        $name = $request->get('name');
+        $selectedCat = $request->get('selectedCat');
+        $msg = $request->get('msg');
+        mail('ahmed.fourati@esprit.tn',"contact","sz");
+        return new JsonResponse();
+    }
 }
