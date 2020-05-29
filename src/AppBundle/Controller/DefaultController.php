@@ -104,8 +104,9 @@ class DefaultController extends Controller
         return $this->render('frontOffice/registerForm.html.twig',array('form'=>$form->createView()));
     }
 
+
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contactez-nous", name="contact")
      */
     public function contactAction(Request $request)
     {
@@ -145,6 +146,7 @@ class DefaultController extends Controller
             'last_username'=>$lastUsername,'user'=>$this->getUser()
         ));
     }
+
 
 
 

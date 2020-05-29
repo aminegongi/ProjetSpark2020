@@ -73,7 +73,16 @@ class UserController extends Controller
         $name = $request->get('name');
         $selectedCat = $request->get('selectedCat');
         $msg = $request->get('msg');
-        mail('ahmed.fourati@esprit.tn',"contact","sz");
+
+        $from = "admin@ukla.tn";
+        $to = "amine.gongi@esprit.tn";
+        $subject = "[Contact] Formulaire de Contact Ukla";
+        $message = "Nom: ". $name . "Mail: ". $mail ."Cat : ".$selectedCat." message: ".$msg;
+
+        $headers = "From:" . $from;
+
+        mail($to,$subject,$message, $headers);
+
         return new JsonResponse();
     }
 }

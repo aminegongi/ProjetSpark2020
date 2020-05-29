@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
     <title>{% block title %}Ukla{% endblock %}</title>
-
+{#
     <!-- Hotjar Tracking Code for www.ukla.tn -->
     <script>
         (function(h,o,t,j,a,r){
@@ -17,7 +17,7 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-
+#}
 
     {% block stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
@@ -276,6 +276,25 @@
 
 
 {% endblock %}
+
+<!-- Default Statcounter code for Ukla Spark
+https://ukla.tn/ -->
+<script type="text/javascript">
+    var sc_project=12332082;
+    var sc_invisible=1;
+    var sc_security="3f5777ad";
+    var sc_https=1;
+    var sc_remove_link=1;
+</script>
+<script type="text/javascript"
+        src="https://www.statcounter.com/counter/counter.js"
+        async></script>
+<noscript><div class="statcounter"><img class="statcounter"
+                                        src="https://c.statcounter.com/12332082/0/3f5777ad/1/"
+                                        alt="Web Analytics Made Easy -
+StatCounter"></div></noscript>
+<!-- End of Statcounter Code -->
+
 </body>
 </html>
 <style>

@@ -41,7 +41,7 @@
                 <section class="post shop_mode_thumbs">
                     <article class="post_content">
                         <nav class="woocommerce-breadcrumb" >
-                            <a href="index.html">Home</a>&nbsp;&#47;&nbsp;Plats
+                            <a href="{{ path('homepage') }}">Home</a>&nbsp;&#47;&nbsp;Plats
                         </nav>
                         <h1 class="page-title">Plats</h1>
                         <!-- --------------------------------  debut tri/search         ----------------------------------------- -->
@@ -74,8 +74,9 @@
         </section>
     </div>
 
-    <div id="sidebar_main" class="widget_area sideBar">
 
+    <div id="sidebar_main" class="widget_area sideBar">
+        {#
         <aside class="widget-first widgetWrap widget_categories">
             <h4 class="title">filtrer</h4>
             <ul>
@@ -97,7 +98,6 @@
                 <li class="">
                     <a>Par Type de plat</a>
                     <ul class='children'>
-                        {# yetzedou mil base :) #}
                         {% for type in listType %}
                             <li class="">
                                 <input type="checkbox" value="base" /> {{type.nom}}
@@ -136,7 +136,7 @@
                 </div>
             </div>
         </aside>
-
+        #}
 
         <aside class="widget-first widgetWrap widget_tag_cloud">
             <h4 class="title">Recette Aléatoire</h4>
