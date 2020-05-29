@@ -30,7 +30,7 @@ class RegistrationType extends AbstractType
                 ),
                 'first_options' => array('label' => 'Password'),
                 'second_options' => array('label' => 'Password confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
+                'invalid_message' => 'les mots de passe doivent correspondre',
             ));
 
     }

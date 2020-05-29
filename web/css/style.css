@@ -2726,3 +2726,20 @@ a.deleteTag:hover{
 	background-color: #d11a2a;
 	cursor: pointer;
 }
+
+/*body, html {*/
+/*	height: 100%;*/
+/*}*/
+
+/*.bg {*/
+/*	!* The image used *!*/
+/*	background-image: url("bg_login_register.jpg");*/
+
+/*	!* Full height *!*/
+/*	height: 100%;*/
+
+/*	!* Center and scale the image nicely *!*/
+/*	background-position: center;*/
+/*	background-repeat: no-repeat;*/
+/*	background-size: cover;*/
+/*}*/

@@ -21,15 +21,15 @@
     <input class="au-btn au-btn--block au-btn--green m-b-20" type="submit" id="_submit" name="_submit" value="{{ 'login'|trans }}" />
 </form>#}
 {% trans_default_domain 'FOSUserBundle' %}
-<div id="user-popUp" class="user-popUp mfp-with-anim ">
+<div id="user-popUp" class="user-popUp mfp-with-anim " >
 <div class="sc_tabs sc_tabs sc_tabs_style_1 sc_tabs_effects" style="display: block">
-    <ul class="sc_tabs_titles">
-        <li><a href="#loginForm" class="loginFormTab">Bienvenue de nouveau !</a></li>
-        <li><a href="#registerForm" class="registerFormTab">faisons connaisance !</a></li>
+    <ul class="sc_tabs_titles" >
+        <li style="background-color: #e2ffb0"><a href="#loginForm" class="loginFormTab">Bienvenue de nouveau !</a></li>
+        <li style="background-color: #e2ffb0"><a href="#registerForm" class="registerFormTab">faisons connaisance !</a></li>
     </ul>
 
     <div class="sc_tabs_array">
-        <div id="loginForm" class="formItems loginFormBody sc_columns_2">
+        <div id="loginForm" class="formItems loginFormBody sc_columns_2" >
             <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">On se connaît déjà ? <br>
                 Alors identifiez-vous, et bienvenue à nouveau! </h5>
             {% if error %}
