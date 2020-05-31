@@ -1,5 +1,5 @@
 login:
-  path:     /login
+  path:     /internal_login
   defaults: { _controller: UserBundle:Security:login }
 
 register:
