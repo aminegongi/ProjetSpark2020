@@ -90,3 +90,37 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+
+
+
+hwi_oauth:
+    connect:
+        confirmation: true
+        registration_form: fos_user.registration.form.factory
+    firewall_names: [main]
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebookID
+            google: googleID
+    resource_owners:
+        #facebook
+        facebook:
+            type: facebook
+            client_id: 830822847444976
+            client_secret: c21b50cca25593249cd8c675f8d960ea
+            scope: "email"
+            options:
+                display: popup
+
+        #google
+        google:
+            type: google
+            client_id: 328314228897-s5jk33arkpi6mkpm8kfc83c785msgt5g.apps.googleusercontent.com
+            client_secret: hxsNNFZXi32JZAHQlpggN177
+            scope: "https://www.googleapis.com/auth/userinfo.email"
+            options:
+                display: popup
+
+

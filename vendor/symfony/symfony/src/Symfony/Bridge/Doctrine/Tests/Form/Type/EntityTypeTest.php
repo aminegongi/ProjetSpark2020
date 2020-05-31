@@ -61,6 +61,13 @@ class EntityTypeTest extends BaseTypeTest
 
     protected static $supportedFeatureSetVersion = 304;
 
+    public static function setUpBeforeClass()
+    {
+        if (\PHP_VERSION_ID >= 80000) {
+            self::markTestSkipped('Doctrine DBAL 2.x is incompatible with PHP 8.');
+        }
+    }
+
     protected function setUp()
     {
         $this->em = DoctrineTestHelper::createTestEntityManager();
@@ -956,7 +963,32 @@ class EntityTypeTest extends BaseTypeTest
         $this->assertNull($field->getData());
     }
 
-    public function testDisallowChoicesThatAreNotIncludedQueryBuilderSingleIdentifierWithLimit()
+    public function testSingleIdentifierWithLimit()
+    {
+        $entity1 = new SingleIntIdEntity(1, 'Foo');
+        $entity2 = new SingleIntIdEntity(2, 'Bar');
+        $entity3 = new SingleIntIdEntity(3, 'Baz');
+
+        $this->persist([$entity1, $entity2, $entity3]);
+
+        $repository = $this->em->getRepository(self::SINGLE_IDENT_CLASS);
+
+        $field = $this->factory->createNamed('name', static::TESTED_TYPE, null, [
+            'em' => 'default',
+            'class' => self::SINGLE_IDENT_CLASS,
+            'query_builder' => $repository->createQueryBuilder('e')
+                ->where('e.id IN (1, 2, 3)')
+                ->setMaxResults(1),
+            'choice_label' => 'name',
+        ]);
+
+        $field->submit('1');
+
+        $this->assertTrue($field->isSynchronized());
+        $this->assertSame($entity1, $field->getData());
+    }
+
+    public function testDisallowChoicesThatAreNotIncludedByQueryBuilderSingleIdentifierWithLimit()
     {
         $entity1 = new SingleIntIdEntity(1, 'Foo');
         $entity2 = new SingleIntIdEntity(2, 'Bar');
