@@ -29,6 +29,8 @@
                 <div id="registerForm" class="formItems registerFormBody sc_columns_2" align="center"style="margin-bottom: 12.5%;">
                     <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">Retapez les informations<br>erronées </h5><br>
 
+
+
                         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
                         <div class="sc_columns_item" align="center">
@@ -36,7 +38,8 @@
                             <ul class="formList" >
                                 {{ form_errors(form.email) }}
                                 <li class="formLogin">{{ form_widget(form.email, {'attr':{'class':'email', 'name':'email'}}) }}</li>
-                                {{ form_errors(form.username) }}
+                               {{ form_errors(form.username) }}
+
                                 <li class="formLogin">{{ form_widget(form.username, {'attr':{'class':'', 'name':'username'}}) }}</li>
                                 {{ form_errors(form.plainPassword.first) }}
                                 <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password'}}) }}</li>
