@@ -1,0 +1,51 @@
+{% extends 'frontOffice/base.html.Twig' %}
+{% block classbody %}page{% endblock %}
+{% block divType %}wrap fullWidth menuStyle1 menuSmartScrollShow bodyStyleFullWide menuStyleFixed visibleMenuDisplay logoImageStyle logoStyleBG{% endblock %}
+{% block content %}
+    <div class="container">
+
+        <div id="messages">
+
+            <div class="Disc">
+            </div>
+
+
+        </div>
+
+    </div>
+<div class="container">
+    <div class="personageImage ">
+        <img src="{{ asset('gifRechAvanc/calm.gif') }}">
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        var user = "{{ user }}";
+        var pathRechAvac = "{{ path('form_plats_rec') }}"  ;
+        var pathRechSm = "{{ path('rechercheSimple') }}"  ;
+        var profile = "{{ path('editProfile') }}"  ;
+    </script>
+    {{ parent() }}
+    <script src="{{ asset('acceuil.js') }}"></script>
+
+{% endblock %}
+    {% block stylesheets %}
+        <style>
+            body{
+                background: url({{ asset('images/test.jpg') }}) ;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-color: white;
+
+            }
+
+
+        </style>
+{{ parent() }}
+        <link rel='stylesheet' href='{{ asset('css/acceuil.css') }}' type='text/css' media='all' />
+
+    {% endblock %}

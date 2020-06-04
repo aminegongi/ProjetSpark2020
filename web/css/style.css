@@ -2332,7 +2332,7 @@ h1 .wpb_text_column p, h2 .wpb_text_column p, h3 .wpb_text_column p, h4 .wpb_tex
 .isotopeReadMore { bottom: 40px; position: absolute; }
 .isotopeReadMore:hover {background: #3f2803; }
 
-footer.footerWidget{background-color: #fff;}
+footer.footerWidget{background-color: transparent;}
 .custom_footer { text-align: center; margin-top: 5px; padding-bottom: 90px; }
 .custom_footer .text { color: #2b2b2b; font-size: 24px; text-transform: uppercase; font-weight: 600; }
 .custom_footer .icon { display: inline-block; font-size: 70px; color: #4c4841; margin-top: 15px; color: #2B2B2B;}

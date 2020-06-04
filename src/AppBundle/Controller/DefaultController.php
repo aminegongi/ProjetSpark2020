@@ -53,7 +53,7 @@ class DefaultController extends Controller
         //$csrfToken = $this->tokenManager;
         $formFactory = $this->get('fos_user.registration.form.factory');
         $form = $formFactory->createForm();
-        return $this->render('default/acceuil.html.twig', array(
+        return $this->render('default/acceuilNew.html.twig', array(
             'form'=>$form->createView(),
             'csrf_token'=>$csrfToken,
             'error'=>$error,
