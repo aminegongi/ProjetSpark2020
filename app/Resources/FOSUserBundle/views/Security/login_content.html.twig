@@ -25,15 +25,14 @@
 <div class="sc_tabs sc_tabs sc_tabs_style_1 sc_tabs_effects" style="display: block">
     <ul class="sc_tabs_titles" >
         <li style="background-color: #e2ffb0"><a href="#loginForm" class="loginFormTab">Bienvenue de nouveau !</a></li>
-        <li style="background-color: #e2ffb0"><a href="#registerForm" class="registerFormTab">faisons connaisance !</a></li>
     </ul>
 
     <div class="sc_tabs_array">
         <div id="loginForm" class="formItems loginFormBody sc_columns_2" >
-            <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">On se connaît déjà ? <br>
-                Alors identifiez-vous, et bienvenue à nouveau! </h5>
+            <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">Ouups.. un petit problème en accédant à votredu compte Ukla ? <br>
+                Réessayons de nouveau ! </h5>
             {% if error %}
-                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <div style="color: red;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
             <form action="{{path("fos_user_security_check")}}" method="post" name="login_form" class="formValid">
                 {% if csrf_token %}
@@ -50,12 +49,7 @@
                         <li class="formPass"><input type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="password"/></li>
 
 
-                        <li class="remember">
-                            <a href="#" class="forgotPwd"></a>
-                            <input type="checkbox" value="forever" id="rememberme" name="rememberme">
-                            <label for="rememberme">Se souvenir de moi</label>
-                        </li>
-                        <li class="formButton"><input class="sendEnter enter sc_button sc_button_skin_global sc_button_style_bg sc_button_size_medium" type="submit" id="_submit" name="_submit" value="{{ 'login'|trans }}" /></li>
+                        <li class=""><input class="sendEnter enter sc_button sc_button_skin_global sc_button_style_bg sc_button_size_medium" type="submit" id="_submit" name="_submit" value="Valider" /></li>
                     </ul>
                 </div>
 
@@ -74,35 +68,6 @@
             </form>
         </div>
 
-        <div id="registerForm" class="formItems registerFormBody sc_columns_2" align="center">
-            <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">C'est la première fois que vous accédez à notre site web?<br>Alors faisons connaissance! </h5>
-
-            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-            {% set var = "Nom d'utilisateur" %}
-            <div class="sc_columns_item" align="center">
-                <input type="hidden" name="redirect_to" value="#" />
-                <ul class="formList" >
-
-                    <li class="formLogin">{{ form_widget(form.email, {'attr':{'class':'email', 'name':'email', 'placeholder':'Votre e-mail'}}) }}</li>
-                    <li class="formLogin">{{ form_widget(form.username, {'attr':{'class':'', 'name':'username','placeholder':var}}) }}</li>
-                    <li class="i-agree">
-                        {{ form_widget(form.termsOfUse, {'attr':{'class':'', 'name':'termsOfUse'}}) }}
-                        <label for="i-agree">j'accepte</label> <a href="#">Termes et conditions</a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="sc_columns_item">
-                <ul class="formList">
-
-                    <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password', 'placeholder':'Mot de passe'}}) }}</li>
-                    <li class="formLogin">{{ form_widget(form.plainPassword.second, {'attr':{'class':'','type':'passwor','placeholder':'Retapez le mot de passe'}}) }}</li>
-                    <li><input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" value="Valider" onClick="this.disabled=true; this.value='Sending…'; this.form.submit();" /></li>
-
-                </ul>
-            </div>
-            {{ form_end(form) }}
-        </div>
     </div>
 </div>
 </div>

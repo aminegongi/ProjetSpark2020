@@ -3,12 +3,9 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-
-
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <title>Healthy Farm | Just another HTML site</title>
+    <title>Ukla</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
     <link rel='stylesheet' href='{{ asset('js/vendor/swiper/idangerous.swiper.css') }}' type='text/css' media='all' />
     <link rel='stylesheet' href='{{ asset('js/vendor/swiper/idangerous.swiper.scrollbar.css') }}' type='text/css' media='all' />
@@ -23,8 +20,12 @@
     <style>
         body{
             background-image: url("{{ asset('images/frontOffice/bg_login_register.jpg') }}");
+            background-position: center center;
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: white;
+
         }
     </style>
 <body style="">
@@ -34,7 +35,7 @@
                 {% for type, messages in app.session.flashbag.all() %}
                     {% for message in messages %}
                         <div class="flash-{{ type }}">
-                            {{ message }}
+{#                            {{ message }}#}
                         </div>
                     {% endfor %}
                 {% endfor %}
@@ -55,8 +56,6 @@
     <script type='text/javascript' src='{{ asset('js/custom/_form_contact.js') }}'></script>
     <script type='text/javascript' src='{{ asset('js/custom/__main.js') }}'></script>
 
-    <script type='text/javascript' src='http://maps.google.com/maps/api/js'></script>
-    <script type='text/javascript' src='{{ asset('js/custom/_googlemap_init.js') }}'></script>
 </body>
 
 </html>

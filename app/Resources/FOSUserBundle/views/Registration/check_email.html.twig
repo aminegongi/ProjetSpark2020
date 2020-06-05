@@ -3,5 +3,25 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+
+    {#    sjhd#}
+    <div id="user-popUp" class="user-popUp mfp-with-anim ">
+        <div class="sc_tabs sc_tabs sc_tabs_style_1 sc_tabs_effects" style="display: block">
+
+
+            <div class="sc_tabs_array">
+                <div id="registerForm" class="formItems registerFormBody sc_columns_2" align="center">
+                    <img src="{{ asset('gifRechAvanc/motivated.gif') }}">
+                    <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">
+                        Vous êtes maintenant un membre dans Ukla !<br>
+                        Il ne vous reste qu'à valider votre mail !
+
+                    </h5>
+                    <h6>{{ 'registration.check_email'|trans({'%email%': user.email}) }} </h6>
+                    <h5> Rendez vous de l'autre coté !</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock fos_user_content %}
