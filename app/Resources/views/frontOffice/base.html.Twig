@@ -245,7 +245,7 @@
 
                                 <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password', 'placeholder':'Mot de passe'}}) }}</li>
                                 <li class="formLogin">{{ form_widget(form.plainPassword.second, {'attr':{'class':'','type':'passwor','placeholder':'Retapez le mot de passe'}}) }}</li>
-                                <li><input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" value="Valider" /></li>
+                                <li><input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" value="Valider"onClick="this.disabled=true; this.value='Sending…'; this.form.submit();" /></li>
 
                             </ul>
                         </div>

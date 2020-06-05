@@ -4,6 +4,7 @@
 namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -11,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class RegistrationType extends AbstractType
 {
@@ -20,6 +22,14 @@ class RegistrationType extends AbstractType
         $builder
             ->add('email')
             ->add('username', null, array('label' => 'username', 'translation_domain' => 'FOSUserBundle'))
+            ->add("termsOfUse", CheckboxType::class, [
+                'constraints' => [
+                    new IsTrue(['message' =>"Vous devez accepter les termes & conditions d'utilisation"])
+                ],
+                'required' => true,
+                'mapped' => false
+
+            ])
             ->add('plainPassword', PasswordType::class)->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'options' => array(
@@ -30,7 +40,7 @@ class RegistrationType extends AbstractType
                 ),
                 'first_options' => array('label' => 'Password'),
                 'second_options' => array('label' => 'Password confirmation'),
-                'invalid_message' => 'les mots de passe doivent correspondre',
+                'invalid_message' => 'fos_user.password.mismatch',
             ));
 
     }

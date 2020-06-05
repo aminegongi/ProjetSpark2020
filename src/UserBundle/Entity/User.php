@@ -22,12 +22,16 @@ class User extends BaseUser
      */
     protected $id;
 
+
+
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
     protected $nom;
+
+
 
     /**
      * @var string
@@ -69,6 +73,17 @@ class User extends BaseUser
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
      */
     protected $facebookID;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="termsOfUse", type="boolean", nullable=true)
+     */
+
+
+
+
 
     /**
      * @return string

@@ -24,43 +24,80 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <body>
     <div id="user-popUp" class="user-popUp mfp-with-anim " style="">
-        <div class="sc_tabs sc_tabs sc_tabs_style_1 sc_tabs_effects" style="display: block;background-color: #e2ffb0">
+
             <div class="sc_tabs_array" style=" background-color: #edffd9">
                 <div id="registerForm" class="formItems registerFormBody sc_columns_2" align="center"style="margin-bottom: 12.5%;">
                     <h5 class="sc_title sc_title_style_3 sc_title_center margin_bottom_10">Retapez les informations<br>erronées </h5><br>
 
+{#                        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}#}
+
+{#                        <div class="sc_columns_item" align="center">#}
+{#                            <input type="hidden" name="redirect_to" value="#" />#}
+{#                            <ul class="formList" >#}
+{#                                {{ form_errors(form.email) }}#}
+{#                                <li class="formLogin">{{ form_widget(form.email, {'attr':{'class':'email', 'name':'email'}}) }}</li>#}
+{#                               {{ form_errors(form.username) }}#}
+
+{#                                <li class="formLogin">{{ form_widget(form.username, {'attr':{'class':'', 'name':'username'}}) }}</li>#}
 
 
-                        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-                        <div class="sc_columns_item" align="center">
-                            <input type="hidden" name="redirect_to" value="#" />
-                            <ul class="formList" >
+{#                            </ul>#}
+{#                        </div>#}
+
+
+
+{#                        <div class="sc_columns_item">#}
+{#                            <ul class="formList">#}
+{#                                <div>#}
+{#                                    {{ form_errors(form.plainPassword.first) }}#}
+{#                                    <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password'}}) }}</li>#}
+{#                                    <li class="formLogin">{{ form_widget(form.plainPassword.second, {'attr':{'class':'','type':'password'}}) }}</li>#}
+{#                                    <li><input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" style="" value="Valider" /></li>#}
+{#                                    <li><a href="{{ path('login') }}" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" style="background-color:#d11a2a">Retour</a></li>#}
+{#                     #}
+{#                                </div>#}
+
+
+{#                            </ul>#}
+{#                        </div>#}
+{#                    {{ form_end(form) }}#}
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    {% set var = "Nom d'utilisateur" %}
+                    <div class="sc_columns_item" align="center">
+                        <input type="hidden" name="redirect_to" value="#" />
+                        <ul class="formList" >
+                            <div style="height: 45px;">
                                 {{ form_errors(form.email) }}
-                                <li class="formLogin">{{ form_widget(form.email, {'attr':{'class':'email', 'name':'email'}}) }}</li>
-                               {{ form_errors(form.username) }}
+                            </div>
+                            <li class="formLogin">{{ form_widget(form.email, {'attr':{'class':'email', 'name':'email'}}) }}</li>
+                            <div style="height: 25px;">
+                                {{ form_errors(form.username) }}
+                            </div>
+                            <li class="formLogin">{{ form_widget(form.username, {'attr':{'class':'', 'name':'username'}}) }}</li>
+                            <li class="formLogin" style="color: red">
+                                {{ form_errors(form.termsOfUse) }}
+                                {{ form_widget(form.termsOfUse, {'attr':{'class':'', 'name':'termsOfUse'}}) }}
+                                j'accepte les <a href="#">Termes et conditions</a>
+                            </li>
+                        </ul>
 
-                                <li class="formLogin">{{ form_widget(form.username, {'attr':{'class':'', 'name':'username'}}) }}</li>
+                    </div>
+                    <div class="sc_columns_item">
+                        <ul class="formList">
+                            <div style="height: 45px;">
                                 {{ form_errors(form.plainPassword.first) }}
-                                <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password'}}) }}</li>
-                                <li class="formLogin">{{ form_widget(form.plainPassword.second, {'attr':{'class':'','type':'password'}}) }}</li>
+                            </div>
+                            <li class="formLogin">{{ form_widget(form.plainPassword.first, {'attr':{'class':'','type':'password'}}) }}</li>
+                            <div style="height: 25px;"></div>
+                            <li class="formLogin">{{ form_widget(form.plainPassword.second, {'attr':{'class':'','type':'password'}}) }}</li>
+                            <div style="margin-top: 5%;">
+                            <input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" value="Valider" onClick="this.disabled=true; this.value='Sending…'; this.form.submit();" /></li>
+                            <a href="{{ path('login') }}" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" style="background-color:#d11a2a; margin-left: 10%;">Retour</a></li>
+                            </div>
 
-
-                            </ul>
-                        </div>
-                        <div class="sc_columns_item">
-                            <ul class="formList">
-                                <div style="margin-top: 13%;margin-right: 17%;">
-                                    <li><input type="submit" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" style="" value="Valider" /></li>
-                                    <li><a href="{{ path('login') }}" class="sendEnter enter sc_button sc_button_skin_dark sc_button_style_bg sc_button_size_medium" style="background-color:#d11a2a">Retour</a></li>
-                                    <li><input type="hidden" style="" value="" /></li>
-                                    <li><input type="hidden" style="" value="" /></li>
-                                    <li><input type="hidden" style="" value="" /></li>
-                                </div>
-
-
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>
                     {{ form_end(form) }}
                 </div>
             </div>
@@ -69,7 +106,9 @@
 </body>
 
 <style>
-
+    ul li{
+        color: red;
+    }
     .email {
         -webkit-font-smoothing: antialiased;
         list-style: none;
