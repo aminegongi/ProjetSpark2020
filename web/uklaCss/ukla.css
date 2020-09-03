@@ -6,7 +6,8 @@
     top: 40px;
 }
 .uklaMsg{
-    width: 150px;
+    min-width: 100px;
+    max-width: 200px;
     box-shadow: 6px 10px 20px 3px rgba(0, 0, 0, 0.23);
     padding: 20px;
     background-color: lightyellow;
